@@ -1,0 +1,6 @@
+rootProject.name = 'summer-modules'
+
+include 'summer-core'
+include 'summer-boot-core'
+include 'summer-boot-starter-web'
+include 'summer-boot-dependencies'

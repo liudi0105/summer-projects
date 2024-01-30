@@ -1,0 +1,2 @@
+rootProject.name = 'spring-modules'
+include "spring-boot-wrapper"

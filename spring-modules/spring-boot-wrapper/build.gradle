@@ -1,0 +1,11 @@
+plugins {
+    id 'java-library'
+}
+
+group = 'com.github.liudi0105'
+version = '1.0-SNAPSHOT'
+
+dependencies {
+    api platform("org.springframework.boot:spring-boot-dependencies:3.2.2")
+    implementation "org.springframework.boot:spring-boot-starter-web"
+}

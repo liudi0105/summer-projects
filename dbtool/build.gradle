@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.github.liudi0105'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    allprojects {
+        repositories {
+            maven { url "https://maven.aliyun.com/repository/central" }
+            maven { url "https://maven.aliyun.com/repository/public" }
+        }
+    }
+}
+
+dependencies {
+    implementation platform("com.github.liudi0105:summer-boot-dependencies")
+    implementation 'io.vertx:vertx-core:4.5.1'
+    implementation 'io.vertx:vertx-web:4.5.1'
+    implementation "com.github.liudi0105:summer-boot-starter-web"
+}
+
+sourceSets {
+    main {
+        java { srcDirs = ["java"] }
+        resources { srcDirs = ["dist"] }
+    }
+    test {
+        java { srcDirs = [] }
+        resources { srcDirs = [] }
+    }
+}
