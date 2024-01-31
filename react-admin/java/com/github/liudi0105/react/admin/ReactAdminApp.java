@@ -1,11 +1,11 @@
-package com.github.liudi0105.spring.jpa;
+package com.github.liudi0105.react.admin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Main {
+public class ReactAdminApp {
     public static void main(String[] args) {
-        SpringApplication.run(Main.class, args);
+        SpringApplication.run(ReactAdminApp.class, args);
     }
 }

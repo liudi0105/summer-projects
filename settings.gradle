@@ -2,6 +2,5 @@ rootProject.name = 'summer'
 includeBuild 'summer-modules'
 includeBuild 'dbtool'
 includeBuild 'spring-modules'
-includeBuild 'quarkus-modules'
-include 'react-admin'
-
+//includeBuild 'quarkus-modules'
+includeBuild 'react-admin'
