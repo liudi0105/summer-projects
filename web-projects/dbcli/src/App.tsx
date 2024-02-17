@@ -1,4 +1,19 @@
-import { Button, ConfigProvider, Dropdown, Flex, MenuProps, theme } from 'antd';
+import { Button, ConfigProvider, Dropdown, Flex, Layout, MenuProps, Tree, theme } from 'antd';
+import { SideBar } from './SideBar';
+import styled from 'styled-components';
+
+const SLayout = styled(Layout)`
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr auto;
+  .header {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  .sider {
+    overflow: auto;
+  }
+`
 
 function App() {
 
@@ -13,7 +28,7 @@ function App() {
   return <ConfigProvider
     theme={{
       algorithm: [
-        theme.compactAlgorithm
+        theme.compactAlgorithm, theme.darkAlgorithm
       ],
       token: {
       },
@@ -23,20 +38,20 @@ function App() {
       }
     }}
   >
-    <Flex vertical>
-      <Flex>
+    <SLayout>
+      <div className='header'>
         <Dropdown menu={{ items: fileMenus }} trigger={['click']}>
           <Button type='text'>文件</Button>
         </Dropdown>
         <Dropdown menu={{ items: fileMenus }} trigger={['click']}>
           <Button type='text'>工具</Button>
         </Dropdown>
-      </Flex>
-      <Flex>
-        <Flex>side</Flex>
-        <Flex>content</Flex>
-      </Flex>
-    </Flex>
+      </div>
+      <div className='sider'>
+        <SideBar />
+      </div>
+      <div className='content'>content</div>
+    </SLayout>
   </ConfigProvider>
 }
 
