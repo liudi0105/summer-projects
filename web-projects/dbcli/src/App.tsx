@@ -1,35 +1,34 @@
-import { Button, ConfigProvider, Dropdown, Flex, MenuProps, Space, theme } from 'antd';
+import { Button, ConfigProvider, Dropdown, Flex, MenuProps, theme } from 'antd';
 
 function App() {
 
-  const items: MenuProps['items'] = [
-    {
-      key: '1',
-      label: '打开',
-    },
+  const fileMenus: MenuProps['items'] = [
+    { key: '1', label: '最近的编辑', },
+    { key: '2', label: '打开脚本', },
+    { key: '3', label: '刷新', },
+    { key: '4', label: '退出', },
   ];
 
 
   return <ConfigProvider
     theme={{
       algorithm: [
-        // theme.compactAlgorithm, theme.darkAlgorithm
+        theme.compactAlgorithm
       ],
       token: {
-        borderRadius: 0,
-        borderRadiusLG: 0,
-        borderRadiusOuter: 0,
-        borderRadiusXS: 0,
-        borderRadiusSM: 0,
+      },
+      components: {
+        Button: {
+        }
       }
     }}
   >
     <Flex vertical>
       <Flex>
-        <Dropdown menu={{ items }} trigger={['click']}>
+        <Dropdown menu={{ items: fileMenus }} trigger={['click']}>
           <Button type='text'>文件</Button>
         </Dropdown>
-        <Dropdown menu={{ items }} trigger={['click']}>
+        <Dropdown menu={{ items: fileMenus }} trigger={['click']}>
           <Button type='text'>工具</Button>
         </Dropdown>
       </Flex>
