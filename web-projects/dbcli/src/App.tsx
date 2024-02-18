@@ -4,8 +4,8 @@ import styled from 'styled-components';
 
 const SLayout = styled(Layout)`
   display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: 1fr auto;
+  grid-template-columns: 200px auto;
+  grid-template-rows: 50px auto;
   .header {
     grid-column-start: 1;
     grid-column-end: 3;
@@ -16,7 +16,6 @@ const SLayout = styled(Layout)`
 `
 
 function App() {
-
   const fileMenus: MenuProps['items'] = [
     { key: '1', label: '最近的编辑', },
     { key: '2', label: '打开脚本', },
