@@ -4,10 +4,14 @@ import { styled } from 'styled-components'
 import { RequestBody } from './RequestBody'
 import { RequestHeader } from './RequestHeader'
 import { RequestParameter } from './RequestParameter'
+import Collections from './Collections'
 
 const SRestApi = styled.div`
   display: flex;
   height: 100%;
+  .collections {
+    width: 200px;
+  }
   .request {
     flex-grow: 1;
     flex-direction: column;
@@ -32,6 +36,9 @@ const SRestApi = styled.div`
 
 export const RestApi = () => {
   return <SRestApi>
+    <Flex className='collections'>
+      <Collections />
+    </Flex>
     <Flex className='request'>
       <Flex className='url-bar'>
         <Input

@@ -1,7 +1,7 @@
-import { Button, ConfigProvider, Layout, Tooltip, theme } from 'antd'
-import './App.css'
+import { DatabaseOutlined, EnvironmentOutlined, HistoryOutlined, SettingOutlined } from '@ant-design/icons'
+import { Button, ConfigProvider, Flex, Layout, Tooltip, theme } from 'antd'
 import { styled } from 'styled-components'
-import { BookOutlined } from '@ant-design/icons'
+import './App.css'
 import { RestApi } from './RestApi'
 
 const SApp = styled(Layout)`
@@ -10,15 +10,13 @@ const SApp = styled(Layout)`
   grid-template-rows: 50px auto;
   height: 100%;
   .side {
-    grid-row-start: 1;
-    grid-row-end: 3;
     padding: 16px 0;
-    display: flex;
-    flex-direction: column;
     row-gap: 8px;
   }
   .head {
-
+    grid-column-start: 1;
+    grid-column-end: 3;
+    padding: 0 24px;
   }
   .content {
 
@@ -26,21 +24,24 @@ const SApp = styled(Layout)`
 `
 
 function App() {
-
   return (
     <ConfigProvider theme={{ algorithm: [theme.darkAlgorithm,] }}>
       <SApp>
-        <div className='side'>
-          <Tooltip title="Rest Api" placement='right'>
-            <Button shape='circle' icon={<BookOutlined />} size='large' />
+        <Flex className='head' justify='end' align='center' gap={8}>
+          <Button icon={<SettingOutlined />} type='text' />
+          <Button type='text'>Sign In</Button>
+        </Flex>
+        <Flex className='side' vertical align='center'>
+          <Tooltip title="Collections" placement='right'>
+            <Button shape='circle' icon={<DatabaseOutlined />} size='large' />
           </Tooltip>
-          <Button shape='circle' icon={<BookOutlined />} size='large' />
-          <Button shape='circle' icon={<BookOutlined />} size='large' />
-          <Button shape='circle' icon={<BookOutlined />} size='large' />
-          <Button shape='circle' icon={<BookOutlined />} size='large' />
-          <Button shape='circle' icon={<BookOutlined />} size='large' />
-        </div>
-        <div className='head'></div>
+          <Tooltip title="Environments" placement='right'>
+            <Button shape='circle' icon={<EnvironmentOutlined />} size='large' />
+          </Tooltip>
+          <Tooltip title="History" placement='right'>
+            <Button shape='circle' icon={<HistoryOutlined />} size='large' />
+          </Tooltip>
+        </Flex>
         <div className='content'>
           <RestApi />
         </div>
