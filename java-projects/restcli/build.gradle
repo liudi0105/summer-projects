@@ -12,7 +12,10 @@ repositories {
 
 dependencies {
     implementation platform("com.github.liudi0105:summer-boot-dependencies:1.0")
+    annotationProcessor platform("com.github.liudi0105:summer-boot-dependencies:1.0")
 
+    implementation "com.github.liudi0105:spring-boot-wrapper:1.0"
+    runtimeOnly "com.h2database:h2"
     compileOnly "org.projectlombok:lombok"
     annotationProcessor "org.projectlombok:lombok"
     implementation "org.springframework.boot:spring-boot-starter-web"

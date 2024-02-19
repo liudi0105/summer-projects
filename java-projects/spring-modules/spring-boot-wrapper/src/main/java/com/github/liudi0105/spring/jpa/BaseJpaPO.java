@@ -19,7 +19,7 @@ import java.time.Instant;
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-public class BaseJpaEntity {
+public class BaseJpaPO {
     @Id
     @UuidGenerator
     private String id;
