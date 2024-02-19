@@ -10,5 +10,5 @@ repositories {
 }
 
 dependencies {
-    api project(":summer-core")
+    api project(":summer-boot-core")
 }
