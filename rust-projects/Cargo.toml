@@ -1,1 +1,1 @@
-workspace = { members = ["tui-demo"] }
+workspace = { members = [ "dbcli/src-tauri", "dbcli-tui", "rust-util" ] }

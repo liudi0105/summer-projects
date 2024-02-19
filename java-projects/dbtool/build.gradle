@@ -6,16 +6,15 @@ group = 'com.github.liudi0105'
 version = '1.0'
 
 repositories {
-    allprojects {
-        repositories {
-            maven { url "https://maven.aliyun.com/repository/public" }
-        }
-    }
+    mavenCentral()
+    maven { url "https://maven.aliyun.com/repository/public" }
 }
 
 dependencies {
-    implementation platform("com.github.liudi0105:summer-boot-dependencies")
-    implementation "com.github.liudi0105:summer-boot-starter-web"
+    implementation platform("com.github.liudi0105:summer-boot-dependencies:1.0")
+
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
     implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui"
     implementation "net.javacrumbs.shedlock:shedlock-spring"
     implementation "org.projectlombok:lombok"

@@ -31,4 +31,6 @@ dependencies {
     }
     api platform("org.springframework.boot:spring-boot-dependencies:3.2.2")
     api platform("io.helidon:helidon-dependencies:4.0.4")
+    // https://mvnrepository.com/artifact/io.helidon.applications/helidon-se
+    api platform('io.helidon.applications:helidon-se:4.0.5')
 }
