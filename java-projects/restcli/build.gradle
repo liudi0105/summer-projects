@@ -13,6 +13,8 @@ repositories {
 dependencies {
     implementation platform("com.github.liudi0105:summer-boot-dependencies:1.0")
 
+    compileOnly "org.projectlombok:lombok"
+    annotationProcessor "org.projectlombok:lombok"
     implementation "org.springframework.boot:spring-boot-starter-web"
     implementation "org.springframework.boot:spring-boot-starter-data-jpa"
     implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui"
@@ -24,15 +26,4 @@ dependencies {
     implementation "org.reflections:reflections"
     implementation "com.nimbusds:nimbus-jose-jwt"
     implementation "org.postgresql:postgresql"
-}
-
-sourceSets {
-    main {
-        java { srcDirs = ["java"] }
-        resources { srcDirs = ["dist"] }
-    }
-    test {
-        java { srcDirs = [] }
-        resources { srcDirs = [] }
-    }
 }

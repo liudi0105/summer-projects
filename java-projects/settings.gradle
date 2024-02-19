@@ -6,3 +6,5 @@ includeBuild 'spring-modules'
 includeBuild 'react-admin'
 //includeBuild 'helidon-admin'
 //includeBuild 'compose-demo'
+includeBuild 'restcli'
+
