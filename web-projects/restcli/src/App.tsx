@@ -11,7 +11,7 @@ const SApp = styled(Layout)`
   height: 100%;
   .side {
     padding: 16px 0;
-    row-gap: 8px;
+    row-gap: 4px;
   }
   .head {
     grid-column-start: 1;
@@ -19,7 +19,6 @@ const SApp = styled(Layout)`
     padding: 0 24px;
   }
   .content {
-
   }
 `
 
@@ -33,13 +32,13 @@ function App() {
         </Flex>
         <Flex className='side' vertical align='center'>
           <Tooltip title="Collections" placement='right'>
-            <Button shape='circle' icon={<DatabaseOutlined />} size='large' />
+            <Button icon={<DatabaseOutlined />} size='large' />
           </Tooltip>
           <Tooltip title="Environments" placement='right'>
-            <Button shape='circle' icon={<EnvironmentOutlined />} size='large' />
+            <Button icon={<EnvironmentOutlined />} size='large' />
           </Tooltip>
           <Tooltip title="History" placement='right'>
-            <Button shape='circle' icon={<HistoryOutlined />} size='large' />
+            <Button icon={<HistoryOutlined />} size='large' />
           </Tooltip>
         </Flex>
         <div className='content'>

@@ -1,5 +1,5 @@
+import { ConfigProvider, Tree, theme } from 'antd';
 import React, { useState } from 'react';
-import { Tree } from 'antd';
 import styled from 'styled-components';
 
 interface DataNode {
@@ -64,7 +64,7 @@ const Collections: React.FC = () => {
     });
 
   return <SCollections>
-    <Tree blockNode className='tree' loadData={onLoadData} treeData={treeData} />
+    <Tree.DirectoryTree className='tree' loadData={onLoadData} treeData={treeData} />
   </SCollections>
 };
 

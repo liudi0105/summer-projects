@@ -10,7 +10,7 @@ const SRestApi = styled.div`
   display: flex;
   height: 100%;
   .collections {
-    width: 200px;
+    width: 280px;
   }
   .request {
     flex-grow: 1;
