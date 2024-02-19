@@ -5,5 +5,6 @@ includeBuild 'spring-modules'
 //includeBuild 'quarkus-modules'
 includeBuild 'react-admin'
 includeBuild 'helidon-admin'
+includeBuild 'compose-demo'
 includeBuild 'summer-demos'
 
