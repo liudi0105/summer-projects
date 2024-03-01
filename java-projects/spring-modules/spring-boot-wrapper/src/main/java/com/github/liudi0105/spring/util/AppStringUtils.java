@@ -1,6 +1,9 @@
 package com.github.liudi0105.spring.util;
 
 import com.google.common.base.CaseFormat;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.Arrays;
 
 public class AppStringUtils {
 
@@ -12,4 +15,20 @@ public class AppStringUtils {
         return CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, str);
     }
 
+    public static boolean isBlank(Object o) {
+        if (o == null) {
+            return true;
+        }
+        if (o instanceof String s) {
+            return StringUtils.isBlank(s);
+        }
+        return false;
+    }
+
+    public static boolean anyBlank(Object... o) {
+        if (o == null) {
+            return true;
+        }
+        return Arrays.stream(o).anyMatch(AppStringUtils::isBlank);
+    }
 }

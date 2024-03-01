@@ -1,4 +1,0 @@
-rootProject.name = 'summer-demos'
-
-include "spring-web-demo"
-include "summer-web-demo"
