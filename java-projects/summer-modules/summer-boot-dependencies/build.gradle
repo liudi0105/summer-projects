@@ -5,9 +5,6 @@ plugins {
 group = 'com.github.liudi0105'
 version = '1.0'
 
-repositories {
-}
-
 javaPlatform {
     allowDependencies()
 }
@@ -29,8 +26,7 @@ dependencies {
         api "com.nimbusds:nimbus-jose-jwt:9.24.2"
         api "org.postgresql:postgresql:42.2.27"
     }
-    api platform("org.springframework.boot:spring-boot-dependencies:3.2.2")
+    api platform("org.springframework.boot:spring-boot-dependencies:3.2.3")
     api platform("io.helidon:helidon-dependencies:4.0.4")
-    // https://mvnrepository.com/artifact/io.helidon.applications/helidon-se
     api platform('io.helidon.applications:helidon-se:4.0.5')
 }

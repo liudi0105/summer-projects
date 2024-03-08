@@ -6,7 +6,6 @@ group = 'com.github.liudi0105'
 version = '1.0'
 
 repositories {
-    mavenCentral()
     maven { url "https://maven.aliyun.com/repository/public" }
 }
 
@@ -20,6 +19,7 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok"
     implementation "org.springframework.boot:spring-boot-starter-web"
     implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "org.springframework.boot:spring-boot-starter-data-jdbc"
     implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui"
     implementation "net.javacrumbs.shedlock:shedlock-spring"
     implementation "org.projectlombok:lombok"
