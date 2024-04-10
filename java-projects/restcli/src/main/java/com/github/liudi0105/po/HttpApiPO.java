@@ -1,4 +1,4 @@
-package com.github.liudi0105.entity;
+package com.github.liudi0105.po;
 
 public class HttpApiPO  {
     private String httpMethod;
