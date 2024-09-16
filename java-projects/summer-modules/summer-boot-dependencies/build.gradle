@@ -29,6 +29,6 @@ dependencies {
         api "com.nimbusds:nimbus-jose-jwt:9.24.2"
         api "org.postgresql:postgresql:42.2.27"
     }
-    api platform("org.springframework.boot:spring-boot-dependencies:3.2.2")
+    api platform("org.springframework.boot:spring-boot-dependencies:3.2.4")
     api platform("io.helidon:helidon-dependencies:4.0.4")
 }
