@@ -1,0 +1,10 @@
+packages:
+  - "core-types"
+  - "core-api"
+  - "core-antd"
+  - "core-config"
+  - "core-dev"
+  - "date-me-manage"
+  - "date-me-app"
+  - "dbtool"
+  - "react-admin"
