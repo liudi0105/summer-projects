@@ -6,6 +6,8 @@ settings:
 
 importers:
 
+  .: {}
+
   core-antd:
     dependencies:
       antd:
@@ -133,6 +135,9 @@ importers:
 
   date-me-manage:
     dependencies:
+      '@liudi0105/core-dev':
+        specifier: workspace:*
+        version: link:../core-dev
       react:
         specifier: ^18.3.1
         version: 18.3.1
