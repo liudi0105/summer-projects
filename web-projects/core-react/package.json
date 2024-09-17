@@ -1,5 +1,5 @@
 {
-  "name": "@liudi0105/core-antd",
+  "name": "@liudi0105/core-react",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,9 +13,8 @@
     "preview": "vite preview"
   },
   "peerDependencies": {
-    "@liudi0105/core-react": "workspace:*",
-    "@ant-design/pro-components": "^2.6.49",
-    "antd": "^5.20.6"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

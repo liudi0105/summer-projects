@@ -2,6 +2,7 @@ packages:
   - "core-types"
   - "core-api"
   - "core-antd"
+  - "core-react"
   - "core-config"
   - "core-dev"
   - "date-me-manage"
