@@ -1,39 +1,33 @@
-import { CrownFilled, Layout } from "@liudi0105/core-antd";
+import { MenuPage } from "@liudi0105/core-antd";
 import "./App.css";
 
 function App() {
   return (
-    <Layout
-      route={{
-        path: "/",
-        routes: [
-          {
-            path: "/welcome",
-            name: "欢迎",
-            component: "./Welcome",
-          },
-          {
-            path: "/admin",
-            name: "管理页",
-            access: "canAdmin",
-            component: "./Admin",
-            routes: [
-              {
-                path: "/admin/sub-page1",
-                name: "用户管理",
-                component: "./Welcome",
-              },
-              {
-                path: "/admin/sub-page2",
-                name: "角色管理",
-                icon: <CrownFilled />,
-                component: "./Welcome",
-              },
-            ],
-          },
-        ],
-      }}
-    ></Layout>
+    <MenuPage
+      title="sss"
+      userEmail="ssdf"
+      onMenuItemClick={() => {}}
+      routerMenuItems={[
+        {
+          path: "/welcome",
+          name: "欢迎",
+        },
+        {
+          path: "/admin",
+          name: "管理页",
+          routes: [
+            {
+              path: "/admin/sub-page1",
+              name: "用户管理",
+            },
+            {
+              path: "/admin/sub-page2",
+              name: "角色管理",
+            },
+          ],
+        },
+      ]}
+    ></MenuPage>
   );
 }
 

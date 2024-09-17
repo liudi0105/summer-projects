@@ -14,13 +14,13 @@ export type MenuPageProps = {
 };
 
 export const MenuPage = (props: MenuPageProps) => {
-  const { userEmail, onMenuItemClick } = props;
+  const { routerMenuItems, userEmail, onMenuItemClick } = props;
 
   return (
     <ProLayout
       route={{
-        path: "",
-        routes: [],
+        path: "/",
+        routes: routerMenuItems,
       }}
       avatarProps={{
         src: "/assets/avatar.jpg",
