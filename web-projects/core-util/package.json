@@ -1,5 +1,5 @@
 {
-  "name": "@liudi0105/core-api",
+  "name": "@liudi0105/core-util",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,10 +10,6 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
-  },
-  "dependencies": {
-    "@liudi0105/core-util": "workspace:*",
-    "@liudi0105/core-types": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^5.5.3",

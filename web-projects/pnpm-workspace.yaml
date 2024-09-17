@@ -4,6 +4,7 @@ packages:
   - "core-antd"
   - "core-react"
   - "core-config"
+  - "core-util"
   - "core-dev"
   - "date-me-manage"
   - "date-me-app"

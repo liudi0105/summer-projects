@@ -3,19 +3,21 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "src/components/index.ts",
-  "module": "src/components/index.ts",
-  "types": "src/components/index.ts",
+  "main": "components/index.ts",
+  "module": "components/index.ts",
+  "types": "components/index.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "peerDependencies": {
-    "@liudi0105/core-react": "workspace:*",
+  "dependencies": {
     "@ant-design/pro-components": "^2.6.49",
-    "antd": "^5.20.6"
+    "@liudi0105/core-react": "workspace:*",
+    "@liudi0105/core-api": "workspace:*",
+    "antd": "^5.20.6",
+    "@ant-design/icons": "^5.4.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
