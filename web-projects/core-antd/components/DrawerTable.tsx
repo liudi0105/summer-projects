@@ -1,6 +1,5 @@
-import { ReactNode } from "@liudi0105/core-react";
 import { Drawer, DrawerProps, TableProps } from "antd";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 
 export type DrawerTableProps = {
   trigger: ReactNode;

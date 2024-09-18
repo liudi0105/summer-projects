@@ -1,6 +1,5 @@
-import { ReactNode } from "@liudi0105/core-react";
 import { Modal, ModalProps } from "antd";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 
 export type TriggerModalProps = {
   trigger: ReactNode;
