@@ -1,8 +1,5 @@
-rootProject.name = 'summer'
+rootProject.name = 'java-projects'
 includeBuild 'summer-modules'
-includeBuild 'dbtool'
 includeBuild 'spring-modules'
-//includeBuild 'quarkus-modules'
-includeBuild 'react-admin'
-//includeBuild 'helidon-admin'
-//includeBuild 'compose-demo'
+include 'dateme-server'
+

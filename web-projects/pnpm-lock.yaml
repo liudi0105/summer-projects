@@ -99,6 +99,9 @@ importers:
 
   core-react:
     dependencies:
+      '@liudi0105/core-util':
+        specifier: workspace:*
+        version: link:../core-util
       react:
         specifier: ^18.3.1
         version: 18.3.1
