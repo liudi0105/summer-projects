@@ -6,4 +6,7 @@ export * from "./TriggerModal";
 export * from "./MenuPage";
 
 export * from "@ant-design/icons";
-export * from "@ant-design/pro-components";
+export * as Ant from "antd";
+export * as Pro from "@ant-design/pro-components";
+
+export * from "@liudi0105/core-react";

@@ -1,3 +1,3 @@
 export const UserView = () => {
-  return <div></div>;
+  return <div>user view</div>;
 };

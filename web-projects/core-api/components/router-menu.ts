@@ -1,9 +1,10 @@
 import { deepCopy, joinPath } from "@liudi0105/core-util";
+import { ReactNode } from "@liudi0105/core-react";
 
 export type RouterMenuItem = {
   path?: string;
   name: string;
-  element?: string;
+  element?: ReactNode;
   children?: RouterMenuItem[];
   routes?: RouterMenuItem[];
 };
