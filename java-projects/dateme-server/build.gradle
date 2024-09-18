@@ -6,14 +6,12 @@ group = 'com.github.liudi0105'
 version = '1.0'
 
 repositories {
-    mavenCentral()
+    maven { url "https://maven.aliyun.com/repository/public" }
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-}
+    implementation "com.github.liudi0105:spring-boot-wrapper:1.0"
 
-test {
-    useJUnitPlatform()
+    compileOnly "org.springframework.boot:spring-boot-starter-web"
+    compileOnly "org.springframework.boot:spring-boot-starter-data-jpa"
 }

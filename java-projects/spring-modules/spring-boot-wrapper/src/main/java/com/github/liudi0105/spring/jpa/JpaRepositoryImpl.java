@@ -1,7 +1,7 @@
 package com.github.liudi0105.spring.jpa;
 
-import com.github.liudi0105.summer.core.ioc.annotation.Autowired;
 import jakarta.persistence.EntityManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 

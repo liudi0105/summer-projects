@@ -16,17 +16,17 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class AppReflectionUtils {
+public class AppReflections {
     public static final String WRITE_REPLACE = "writeReplace";
     private static final Map<SerializableFunction<?, ?>, Field> fieldCache = new ConcurrentHashMap<>();
     private static final Map<SerializableFunction<?, ?>, String> fieldNameCache = new ConcurrentHashMap<>();
 
     public static String getFieldName(SerializableFunction<?, ?> function) {
-        return fieldNameCache.computeIfAbsent(function, AppReflectionUtils::findFieldName);
+        return fieldNameCache.computeIfAbsent(function, AppReflections::findFieldName);
     }
 
     public static Field getField(SerializableFunction<?, ?> function) {
-        return fieldCache.computeIfAbsent(function, AppReflectionUtils::getField);
+        return fieldCache.computeIfAbsent(function, AppReflections::getField);
     }
 
     public static <E> Class<E> clazz(String className) {

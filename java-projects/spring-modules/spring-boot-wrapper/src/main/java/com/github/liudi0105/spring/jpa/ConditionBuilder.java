@@ -1,7 +1,7 @@
 package com.github.liudi0105.spring.jpa;
 
-import com.github.liudi0105.spring.util.AppReflectionUtils;
-import com.github.liudi0105.spring.util.AppStringUtils;
+import com.github.liudi0105.spring.util.AppReflections;
+import com.github.liudi0105.spring.util.AppStrings;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
@@ -83,11 +83,11 @@ public class ConditionBuilder<E> {
     public ConditionBuilder<E> combine(ConditionBuilder<E> cb) {
         Tuple2<String, ?> t2 = cb.t2;
 
-        if (t2 != null && AppStringUtils.isBlank(t2.t2)) {
+        if (t2 != null && AppStrings.isBlank(t2.t2)) {
             return this;
         }
         Tuple3<String, ?, ?> t3 = cb.t3;
-        if (t3 != null && AppStringUtils.anyBlank(t3.t2, t3.t3)) {
+        if (t3 != null && AppStrings.anyBlank(t3.t2, t3.t3)) {
             return this;
         }
         if (Type.EMPTY_CONDITION.equals(cb.type)) {
@@ -101,7 +101,7 @@ public class ConditionBuilder<E> {
     }
 
     private ConditionBuilder<E> ofField(Type type, SerializableFunction<E, ?> field) {
-        return ofField(type, AppReflectionUtils.getFieldName(field));
+        return ofField(type, AppReflections.getFieldName(field));
     }
 
     public ConditionBuilder<E> ofField(Type type, String field) {
@@ -109,7 +109,7 @@ public class ConditionBuilder<E> {
     }
 
     private <V> ConditionBuilder<E> ofT3(Type type, SerializableFunction<E, V> function, V v1, V v2) {
-        return ofT3(type, new Tuple3<>(AppReflectionUtils.getFieldName(function), v1, v2));
+        return ofT3(type, new Tuple3<>(AppReflections.getFieldName(function), v1, v2));
     }
 
     public ConditionBuilder<E> ofT3(Type type, Tuple3<String, ?, ?> t3) {
@@ -117,7 +117,7 @@ public class ConditionBuilder<E> {
     }
 
     private ConditionBuilder<E> ofT2(Type type, SerializableFunction<E, ?> function, Object value) {
-        return ofT2(type, new Tuple2<>(AppReflectionUtils.getFieldName(function), value));
+        return ofT2(type, new Tuple2<>(AppReflections.getFieldName(function), value));
     }
 
     private ConditionBuilder<E> ofT2(Type type, String field, Object value) {

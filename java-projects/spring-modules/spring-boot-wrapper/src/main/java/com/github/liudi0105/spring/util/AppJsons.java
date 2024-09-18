@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @NoArgsConstructor
-public class AppJsonUtils {
+public class AppJsons {
     private static final ObjectMapper OBJECT_MAPPER = newObjectMapper();
     private static final ObjectMapper OBJECT_MAPPER_WITH_NULL_FIELDS = newObjectMapperShowNullFields();
 
@@ -78,12 +78,12 @@ public class AppJsonUtils {
         return map
                 .entrySet()
                 .stream()
-                .collect(Collectors.toMap(k -> AppStringUtils.underline(k.getKey()), Map.Entry::getValue));
+                .collect(Collectors.toMap(k -> AppStrings.underline(k.getKey()), Map.Entry::getValue));
     }
 
     public static <T> Map<String, T> fromUnderlineMap(Map<String, T> map) {
         Map<String, T> resMap = new HashMap<>();
-        map.forEach((k, v) -> resMap.put(AppStringUtils.hump(k), v));
+        map.forEach((k, v) -> resMap.put(AppStrings.hump(k), v));
         return resMap;
     }
 
@@ -150,14 +150,14 @@ public class AppJsonUtils {
     static class LocalDateTimeSerializer extends JsonSerializer<LocalDateTime> {
         @Override
         public void serialize(LocalDateTime value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-            gen.writeString(AppTimeUtils.format(value));
+            gen.writeString(AppTimes.format(value));
         }
     }
 
     static class LocalDateTimeDeserializer extends JsonDeserializer<LocalDateTime> {
         @Override
         public LocalDateTime deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JacksonException {
-            return AppTimeUtils.parseLocalDateTime(p.getValueAsString());
+            return AppTimes.parseLocalDateTime(p.getValueAsString());
         }
     }
 
@@ -165,7 +165,7 @@ public class AppJsonUtils {
         @Override
         public Instant deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JacksonException {
             try {
-                return AppTimeUtils.parseOffsetDateTime(p.getText()).toInstant();
+                return AppTimes.parseOffsetDateTime(p.getText()).toInstant();
             } catch (DateTimeParseException e) {
                 return Instant.ofEpochSecond(p.getValueAsLong());
             }
@@ -175,7 +175,7 @@ public class AppJsonUtils {
     static class InstantSerializer extends JsonSerializer<Instant> {
         @Override
         public void serialize(Instant value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-            gen.writeString(AppTimeUtils.format(value.atOffset(ZoneOffset.UTC).toZonedDateTime()));
+            gen.writeString(AppTimes.format(value.atOffset(ZoneOffset.UTC).toZonedDateTime()));
         }
     }
 

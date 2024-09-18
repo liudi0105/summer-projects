@@ -2,7 +2,7 @@ package com.github.liudi0105.spring.util;
 
 import com.github.liudi0105.spring.error.AppError;
 
-public class AppPageUtils {
+public class AppPages {
 
     public static void checkPageParam(Integer pageIndex, Integer pageSize) {
         if (pageIndex == null || pageIndex < 1) {

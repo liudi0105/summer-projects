@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class AppTimeUtils {
+public class AppTimes {
     public static final String DEFAULT_LOCAL_DATETIME_PATTERN = "yyyy-MM--dd HH:mm:ss";
 
     public static LocalDateTime parseLocalDateTime(String value) {

@@ -5,7 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
 
-public class AppStringUtils {
+public class AppStrings {
 
     public static String underline(String str) {
         return CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, str);
@@ -29,6 +29,6 @@ public class AppStringUtils {
         if (o == null) {
             return true;
         }
-        return Arrays.stream(o).anyMatch(AppStringUtils::isBlank);
+        return Arrays.stream(o).anyMatch(AppStrings::isBlank);
     }
 }

@@ -1,6 +1,6 @@
 package com.github.liudi0105.spring.jpa;
 
-import com.github.liudi0105.spring.util.AppReflectionUtils;
+import com.github.liudi0105.spring.util.AppReflections;
 import jakarta.persistence.criteria.*;
 import lombok.experimental.Accessors;
 import org.springframework.data.jpa.domain.Specification;
@@ -110,7 +110,7 @@ public class QueryBuilder<E> {
     }
 
     public final QueryBuilder<E> orderBy(SerializableFunction<E, ? extends Comparable<?>>... functions) {
-        orderBy = Arrays.stream(functions).map(AppReflectionUtils::getFieldName).toArray(String[]::new);
+        orderBy = Arrays.stream(functions).map(AppReflections::getFieldName).toArray(String[]::new);
         return this;
     }
 

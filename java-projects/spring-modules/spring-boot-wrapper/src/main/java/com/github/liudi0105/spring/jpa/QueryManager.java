@@ -1,8 +1,8 @@
 package com.github.liudi0105.spring.jpa;
 
 import com.github.liudi0105.spring.dto.AppPageResult;
-import com.github.liudi0105.spring.util.AppJsonUtils;
-import com.github.liudi0105.spring.util.AppPageUtils;
+import com.github.liudi0105.spring.util.AppJsons;
+import com.github.liudi0105.spring.util.AppPages;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import org.hibernate.query.NativeQuery;
@@ -28,17 +28,17 @@ public class QueryManager {
     public <R> R queryOne(SqlBuilder oldSqlBuilder, Class<R> resultClazz) {
         Query query = createQuery(oldSqlBuilder);
         Map<String, Object> resultMap = (Map<String, Object>) query.getSingleResult();
-        return AppJsonUtils.convertUnderlineMap(resultMap, resultClazz);
+        return AppJsons.convertUnderlineMap(resultMap, resultClazz);
     }
 
     public <R> List<R> queryList(SqlBuilder oldSqlBuilder, Class<R> resultCLazz) {
         Query query = createQuery(oldSqlBuilder);
         List<Map<String, ?>> resultList = query.getResultList();
-        return AppJsonUtils.convertUnderlineMapList(resultList, resultCLazz);
+        return AppJsons.convertUnderlineMapList(resultList, resultCLazz);
     }
 
     public <R> AppPageResult<R> queryPage(SqlBuilder sqlBuilder, Class<R> resultClazz, Integer pageIndex, Integer pageSize) {
-        AppPageUtils.checkPageParam(pageIndex, pageSize);
+        AppPages.checkPageParam(pageIndex, pageSize);
 
         String countSql = "select count(1) from (" + sqlBuilder.toString() + ") as total";
         Query countQuery = entityManager.createNamedQuery(countSql).unwrap(org.hibernate.query.Query.class);
@@ -51,7 +51,7 @@ public class QueryManager {
         sqlBuilder.getParams().forEach(contentQuery::setParameter);
         contentQuery.unwrap(NativeQuery.class).setResultListTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         List<Map<String, ?>> resultList = contentQuery.getResultList();
-        List<R> content = AppJsonUtils.convertUnderlineMapList(resultList, resultClazz);
+        List<R> content = AppJsons.convertUnderlineMapList(resultList, resultClazz);
         return AppPageResult.of(count, content);
     }
 }
