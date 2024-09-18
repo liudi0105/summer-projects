@@ -1,6 +1,12 @@
 packages:
-  # all packages in direct subdirs of packages/
-  - 'dbcli'
-  - 'dbtool'
-  - 'react-admin'
-  - 'restcli'
+  - "core-types"
+  - "core-api"
+  - "core-antd"
+  - "core-react"
+  - "core-config"
+  - "core-util"
+  - "core-dev"
+  - "date-me-manage"
+  - "date-me-app"
+  - "dbtool"
+  - "react-admin"
