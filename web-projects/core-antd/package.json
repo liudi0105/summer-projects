@@ -16,6 +16,7 @@
     "@ant-design/pro-components": "^2.6.49",
     "@liudi0105/core-react": "workspace:*",
     "@liudi0105/core-api": "workspace:*",
+    "@liudi0105/core-config": "workspace:*",
     "antd": "^5.20.6",
     "@ant-design/icons": "^5.4.0"
   },

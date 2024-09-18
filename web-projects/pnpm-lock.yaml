@@ -19,6 +19,9 @@ importers:
       '@liudi0105/core-api':
         specifier: workspace:*
         version: link:../core-api
+      '@liudi0105/core-config':
+        specifier: workspace:*
+        version: link:../core-config
       '@liudi0105/core-react':
         specifier: workspace:*
         version: link:../core-react
@@ -170,7 +173,7 @@ importers:
         specifier: ^5.4.1
         version: 5.4.5
 
-  date-me-app:
+  dateme-app:
     dependencies:
       react:
         specifier: ^18.3.1
@@ -213,7 +216,7 @@ importers:
         specifier: ^5.4.1
         version: 5.4.5
 
-  date-me-manage:
+  dateme-manage:
     dependencies:
       '@liudi0105/core-antd':
         specifier: workspace:*
@@ -228,12 +231,6 @@ importers:
       '@eslint/js':
         specifier: ^9.9.0
         version: 9.10.0
-      '@types/react':
-        specifier: ^18.3.3
-        version: 18.3.6
-      '@types/react-dom':
-        specifier: ^18.3.0
-        version: 18.3.0
       '@vitejs/plugin-react-swc':
         specifier: ^3.5.0
         version: 3.7.0(@swc/helpers@0.5.13)(vite@5.4.5)
