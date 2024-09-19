@@ -4,3 +4,4 @@ plugins {
 
 group = 'com.github.liudi0105'
 version = '1.0'
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)

@@ -1,5 +1,6 @@
 rootProject.name = 'java-projects'
-includeBuild 'summer-modules'
+//includeBuild 'summer-modules'
 includeBuild 'spring-modules'
+includeBuild 'core-modules'
 include 'dateme-server'
 

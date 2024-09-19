@@ -15,6 +15,5 @@ dependencies {
     api "com.github.liudi0105:core-util:1.0"
     compileOnly "org.projectlombok:lombok"
     annotationProcessor "org.projectlombok:lombok"
-    compileOnly "org.springframework.boot:spring-boot-starter-web"
     compileOnly "org.springframework.boot:spring-boot-starter-data-jpa"
 }
