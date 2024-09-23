@@ -3,7 +3,7 @@ package com.github.liudi0105.wrapper.spring.jpa;
 import com.github.liudi0105.core.util.AppJsons;
 import com.github.liudi0105.core.util.AppReflections;
 import com.github.liudi0105.core.util.SerializableFunction;
-import com.github.liudi0105.wrapper.spring.common.dto.dto.BaseDTO;
+import com.github.liudi0105.wrapper.spring.common.dto.BaseDTO;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.core.EntityInformation;

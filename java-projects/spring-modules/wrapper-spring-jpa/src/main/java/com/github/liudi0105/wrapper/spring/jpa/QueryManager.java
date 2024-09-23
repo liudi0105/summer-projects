@@ -2,6 +2,7 @@ package com.github.liudi0105.wrapper.spring.jpa;
 
 import com.github.liudi0105.core.util.AppJsons;
 import com.github.liudi0105.core.util.AppPages;
+import com.github.liudi0105.wrapper.spring.common.dto.AppPageResult;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import org.hibernate.query.NativeQuery;

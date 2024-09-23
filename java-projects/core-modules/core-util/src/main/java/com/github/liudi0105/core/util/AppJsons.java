@@ -9,7 +9,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.github.liudi0105.spring.error.AppError;
 import com.google.common.collect.Maps;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -112,7 +111,7 @@ public class AppJsons {
         try {
             return OBJECT_MAPPER_WITH_NULL_FIELDS.writeValueAsString(object);
         } catch (JsonProcessingException e) {
-            throw new AppError(e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -124,7 +123,7 @@ public class AppJsons {
             return OBJECT_MAPPER.readValue(json, new TypeReference<>() {
             });
         } catch (JsonProcessingException e) {
-            throw new AppError(e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -132,7 +131,7 @@ public class AppJsons {
         try {
             return OBJECT_MAPPER.readValue(json, tTypeReference);
         } catch (JsonProcessingException e) {
-            throw new AppError(e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -143,7 +142,7 @@ public class AppJsons {
         try {
             return OBJECT_MAPPER.readValue(json, clazz);
         } catch (JsonProcessingException e) {
-            throw new AppError(e);
+            throw new RuntimeException(e);
         }
     }
 

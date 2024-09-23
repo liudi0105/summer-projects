@@ -1,6 +1,6 @@
 package com.github.liudi0105.dateme.permission.user;
 
-import com.github.liudi0105.wrapper.spring.common.dto.dto.BaseDTO;
+import com.github.liudi0105.wrapper.spring.common.dto.BaseDTO;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,7 +1,7 @@
 package com.github.liudi0105.wrapper.spring.jpa;
 
+import com.github.liudi0105.core.util.AppReflections;
 import com.github.liudi0105.core.util.SerializableFunction;
-import com.github.liudi0105.spring.util.AppReflections;
 import jakarta.persistence.criteria.*;
 import lombok.experimental.Accessors;
 import org.springframework.data.jpa.domain.Specification;

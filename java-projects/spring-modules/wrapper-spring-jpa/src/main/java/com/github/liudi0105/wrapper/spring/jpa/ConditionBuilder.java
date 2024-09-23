@@ -1,8 +1,8 @@
 package com.github.liudi0105.wrapper.spring.jpa;
 
+import com.github.liudi0105.core.util.AppReflections;
+import com.github.liudi0105.core.util.AppStrings;
 import com.github.liudi0105.core.util.SerializableFunction;
-import com.github.liudi0105.spring.util.AppReflections;
-import com.github.liudi0105.spring.util.AppStrings;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;

@@ -1,6 +1,5 @@
 package com.github.liudi0105.wrapper.spring.jpa;
 
-import com.github.liudi0105.spring.error.AppError;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
@@ -49,13 +48,13 @@ public class SqlBuilder {
         int paramCount = StringUtils.countMatches(segment, PARAM_HOLDER);
         if (params == null) {
             if (paramCount != 1) {
-                throw new AppError("param count not match");
+                throw new RuntimeException("param count not match");
             }
             return this;
         }
         if (paramCount != params.length) {
             log.warn("params length not match, {}, {}", segment, params);
-            throw new AppError("param count not match");
+            throw new RuntimeException("param count not match");
         }
 
         Iterator<Object> iterator = Arrays.stream(params).iterator();
