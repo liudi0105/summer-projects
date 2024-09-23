@@ -1,4 +1,4 @@
-package com.github.liudi0105.spring.dto;
+package com.github.liudi0105.wrapper.spring.common.dto.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

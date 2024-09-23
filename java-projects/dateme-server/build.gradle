@@ -10,8 +10,7 @@ repositories {
 }
 
 dependencies {
-    implementation "com.github.liudi0105:spring-boot-wrapper:1.0"
-
-    compileOnly "org.springframework.boot:spring-boot-starter-web"
-    compileOnly "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "com.github.liudi0105:wrapper-spring-jpa:1.0"
+    implementation "com.github.liudi0105:wrapper-spring-webmvc:1.0"
+    compileOnly "org.projectlombok:lombok"
 }

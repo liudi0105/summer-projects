@@ -1,0 +1,6 @@
+services:
+  nginx:
+    image: nginx:ss
+    volumns:
+      - ./nginx.config:/etc/nginx/nginx.config:ro
+    command: ["nginx-debug", "-g", "daemon off;"]

@@ -1,9 +1,9 @@
 package com.github.liudi0105.wrapper.spring.jpa;
 
-import com.github.liudi0105.spring.dto.BaseDTO;
-import com.github.liudi0105.spring.util.AppBeans;
-import com.github.liudi0105.spring.util.AppJsons;
-import com.github.liudi0105.spring.util.AppReflections;
+import com.github.liudi0105.core.util.AppJsons;
+import com.github.liudi0105.core.util.AppReflections;
+import com.github.liudi0105.core.util.SerializableFunction;
+import com.github.liudi0105.wrapper.spring.common.dto.dto.BaseDTO;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.core.EntityInformation;
@@ -22,7 +22,7 @@ public class AppJpaService<R extends AppJpaRepo, E, I, D extends BaseDTO> implem
 
     protected final Class<E> entityClass = computeEntityClass();
 
-    protected final Class<R> repoClass;
+    protected final Class<R> repoClass = computeRepoClass();
 
     protected boolean convertWithJson;
 
@@ -61,6 +61,6 @@ public class AppJpaService<R extends AppJpaRepo, E, I, D extends BaseDTO> implem
     }
 
     public E e(D dto) {
-        return convertWithJson ? AppJsons.convert(dto, entityClass) : AppBeans.con;
+        return AppJsons.convert(dto, entityClass);
     }
 }

@@ -1,11 +1,8 @@
 package com.github.liudi0105.core.util;
 
-import com.github.liudi0105.spring.error.AppError;
-import com.github.liudi0105.spring.jpa.SerializableFunction;
+
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import org.springframework.util.ClassUtils;
-import org.springframework.util.ReflectionUtils;
 
 import java.beans.Introspector;
 import java.lang.invoke.SerializedLambda;
@@ -33,7 +30,7 @@ public class AppReflections {
         try {
             return (Class<E>) Class.forName(className);
         } catch (Exception e) {
-            throw new AppError(e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -41,7 +38,7 @@ public class AppReflections {
         try {
             return newInstance(clazz(className));
         } catch (Exception e) {
-            throw new AppError(e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -49,7 +46,7 @@ public class AppReflections {
         try {
             return clazz.getConstructor().newInstance();
         } catch (Exception e) {
-            throw new AppError(e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -64,17 +61,17 @@ public class AppReflections {
     public static void setField(Object target, String fieldName, Object vlaue) {
         try {
             Field declaredField = target.getClass().getDeclaredField(fieldName);
-            ReflectionUtils.makeAccessible(declaredField);
-            ReflectionUtils.setField(declaredField, target, vlaue);
+            declaredField.setAccessible(true);
+            declaredField.set(target, vlaue);
         } catch (Exception e) {
-            throw new AppError(e);
+            throw new RuntimeException(e);
         }
     }
 
     private static String findFieldName(SerializableFunction<?, ?> function) {
         try {
             Method method = function.getClass().getDeclaredMethod(WRITE_REPLACE);
-            ReflectionUtils.makeAccessible(method);
+            method.setAccessible(true);
             SerializedLambda serializedLambda = (SerializedLambda) method.invoke(function);
 
             String implMethodName = serializedLambda.getImplMethodName();
@@ -90,7 +87,15 @@ public class AppReflections {
             }
             return fieldName;
         } catch (Exception e) {
-            throw new AppError(e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static Field findField(String fieldName, Class<?> target) {
+        try {
+            return target.getField(fieldName);
+        } catch (NoSuchFieldException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -98,18 +103,18 @@ public class AppReflections {
         Field field = null;
         try {
             Method method = function.getClass().getDeclaredMethod(WRITE_REPLACE);
-            ReflectionUtils.makeAccessible(method);
+            method.setAccessible(true);
             SerializedLambda serializedLambda = (SerializedLambda) method.invoke(function);
             String declaredClass = serializedLambda.getImplClass().replace("/", ".");
-            Class<?> clazz = Class.forName(declaredClass, false, ClassUtils.getDefaultClassLoader());
+            Class<?> clazz = Class.forName(declaredClass, false, Class.class.getClassLoader());
             String fieldName = getFieldName(function);
-            field = ReflectionUtils.findField(clazz, fieldName);
+            field = findField(fieldName, clazz);
             if (field == null) {
                 throw new NoSuchFieldException(fieldName);
             }
             return field;
         } catch (Exception e) {
-            throw new AppError(e);
+            throw new RuntimeException(e);
         }
     }
 

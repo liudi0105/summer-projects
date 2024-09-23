@@ -1,5 +1,6 @@
 package com.github.liudi0105.wrapper.spring.jpa;
 
+import com.github.liudi0105.core.util.SerializableFunction;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
