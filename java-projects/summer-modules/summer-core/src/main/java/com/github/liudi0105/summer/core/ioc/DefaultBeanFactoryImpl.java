@@ -1,6 +1,6 @@
-package com.github.liudi0105.summer.core.ioc;
+package common.module.summer.core.ioc;
 
-import com.github.liudi0105.summer.core.ioc.exceptions.BeanAlreadyDefinedException;
+import common.module.summer.core.ioc.exceptions.BeanAlreadyDefinedException;
 import org.apache.commons.collections4.MultiValuedMap;
 import org.apache.commons.collections4.multimap.HashSetValuedHashMap;
 

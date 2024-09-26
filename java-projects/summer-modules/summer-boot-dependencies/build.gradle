@@ -2,7 +2,7 @@ plugins {
     id 'java-platform'
 }
 
-group = 'com.github.liudi0105'
+group = 'common-module'
 version = '1.0'
 
 javaPlatform {

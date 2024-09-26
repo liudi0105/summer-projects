@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+group = 'common-module'
+version = '1.0'
+
+repositories {
+    maven { url "https://maven.aliyun.com/repository/public" }
+}
+
+dependencies {
+    implementation platform("common-module:common-dependencies")
+    annotationProcessor platform("common-module:common-dependencies")
+    implementation "common-module:common-jpa"
+    implementation "common-module:common-webmvc"
+    compileOnly "org.projectlombok:lombok"
+}

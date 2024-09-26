@@ -1,6 +1,6 @@
-//package com.github.liudi0105.summer.boot.core.bootstrap;
+//package common.module.summer.boot.core.bootstrap;
 //
-//import com.github.liudi0105.summer.core.ioc.utils.PackageScanner;
+//import common.module.summer.core.ioc.utils.PackageScanner;
 //
 //import java.io.IOException;
 //import java.util.List;

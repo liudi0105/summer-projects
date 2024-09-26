@@ -1,0 +1,27 @@
+plugins {
+    id 'java-library'
+}
+
+group = 'common-module'
+version = '1.0'
+
+dependencies {
+    api platform(project(":common-dependencies"))
+    annotationProcessor platform(project(":common-dependencies"))
+    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok'
+    api "com.fasterxml.jackson.core:jackson-databind"
+    api "com.fasterxml.jackson.core:jackson-core"
+    api "com.fasterxml.jackson.core:jackson-annotations"
+    api "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
+    api 'org.reflections:reflections'
+    api 'org.apache.poi:poi-ooxml'
+    api 'commons-codec:commons-codec'
+    api 'org.apache.commons:commons-lang3'
+    api 'org.apache.commons:commons-text'
+    api 'org.apache.commons:commons-collections4'
+    api 'com.google.guava:guava'
+    api 'com.google.code.gson:gson'
+    api 'com.nimbusds:nimbus-jose-jwt'
+    api 'org.postgresql:postgresql'
+}

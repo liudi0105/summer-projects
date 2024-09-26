@@ -1,0 +1,13 @@
+plugins {
+    id 'java-library'
+}
+
+group = 'common-module'
+version = '1.0'
+
+subprojects {
+    repositories {
+        maven { url "https://maven.aliyun.com/repository/public" }
+    }
+}
+

@@ -1,4 +1,4 @@
-package com.github.liudi0105.annotation;
+package common.module.annotation;
 
 public @interface RequestBody {
 }

@@ -1,6 +1,0 @@
-rootProject.name = 'spring-modules'
-include "spring-boot-wrapper"
-include "wrapper-spring-jpa"
-include "wrapper-spring-webmvc"
-include "wrapper-spring-common"
-include "wrapper-logstash"

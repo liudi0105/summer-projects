@@ -1,4 +1,4 @@
-package com.github.liudi0105.summer.core.ioc.annotation;
+package common.module.summer.core.ioc.annotation;
 
 public @interface Autowired {
 }

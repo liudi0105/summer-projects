@@ -1,0 +1,12 @@
+plugins {
+    id 'java'
+}
+
+group = 'common-module'
+version = '1.0'
+
+repositories {
+}
+
+dependencies {
+}

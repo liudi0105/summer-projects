@@ -1,4 +1,4 @@
-package com.github.liudi0105.summer.core.ioc;
+package common.module.summer.core.ioc;
 
 public interface BeanFactory {
 

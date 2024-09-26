@@ -1,4 +1,4 @@
-package com.github.liudi0105.summer.core.ioc.beans;
+package common.module.summer.core.ioc.beans;
 
 public class BeanDefinition {
 }
