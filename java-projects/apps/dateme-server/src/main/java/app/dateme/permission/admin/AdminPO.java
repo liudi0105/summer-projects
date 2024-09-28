@@ -1,6 +1,6 @@
-package app.dateme.permission.user;
+package app.dateme.permission.admin;
 
-import common.module.model.dto.BaseDTO;
+import common.module.jpa.BaseJpaPO;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -8,5 +8,5 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 @Accessors(chain = true)
-public class UserDetailDTO extends BaseDTO {
+public class AdminPO extends BaseJpaPO {
 }

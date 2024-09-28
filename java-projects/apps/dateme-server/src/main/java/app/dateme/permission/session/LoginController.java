@@ -1,6 +1,6 @@
 package app.dateme.permission.session;
 
-import app.dateme.permission.user.UserAccountService;
+import app.dateme.user.UserAccountService;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;

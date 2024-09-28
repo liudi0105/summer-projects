@@ -1,4 +1,4 @@
-package app.dateme.permission.user;
+package app.dateme.user;
 
 import common.module.jpa.BaseJpaService;
 import org.springframework.stereotype.Component;
