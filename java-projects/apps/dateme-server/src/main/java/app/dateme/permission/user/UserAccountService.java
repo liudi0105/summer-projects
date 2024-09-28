@@ -4,6 +4,6 @@ import common.module.jpa.BaseJpaService;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserAccountService extends BaseJpaService<UserAccountRepo, UserAccountEntity, UserAccountDTO> {
+public class UserAccountService extends BaseJpaService<UserAccountRepo, UserAccountPO, UserAccountDTO> {
 
 }
