@@ -1,8 +1,9 @@
 package common.module.jpa;
 
-import org.springframework.transaction.annotation.Transactional;
+import common.module.model.dto.BaseDTO;
 
-@Transactional(readOnly = true)
-public interface BaseJpaRepo<E>extends AppJpaRepo<E, String>  {
+import java.util.List;
 
+public interface BaseJpaRepo<E extends BaseJpaPO, D extends BaseDTO> extends DefaultJpaRepo<E> {
+    List<E> findAllDtoById(Iterable<String> strings);
 }

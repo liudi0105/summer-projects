@@ -11,7 +11,7 @@ import org.springframework.data.repository.core.EntityInformation;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-public class AppJpaService<R extends AppJpaRepo, E, I, D extends BaseDTO> implements JpaService {
+public class AppJpaService<R extends SimpleJpaRepo, E, I, D extends BaseDTO> implements JpaService {
 
     @Getter
     private R repo;

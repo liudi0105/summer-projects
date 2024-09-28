@@ -1,5 +1,6 @@
 package common.module.jpa;
 
+import common.module.model.dto.BaseDTO;
 import common.module.util.SerializableFunction;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
 import java.util.Optional;
 
-public class JpaRepositoryImpl<E extends BaseJpaPO> extends SimpleJpaRepository<E, String> implements BaseJpaRepo<E> {
+public class JpaRepositoryImpl<E extends BaseJpaPO, D extends BaseDTO> extends SimpleJpaRepository<E, String> implements DefaultJpaRepo<E> {
     @Autowired
     private QueryManager queryManager;
 
