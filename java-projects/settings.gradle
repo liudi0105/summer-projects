@@ -1,5 +1,4 @@
 rootProject.name = 'java-projects'
 //includeBuild 'summer-modules'
-includeBuild 'core-module'
-include 'apps'
-
+includeBuild ('core-module')
+includeBuild("apps")
