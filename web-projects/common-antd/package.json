@@ -1,8 +1,11 @@
 {
-  "name": "@liudi0105/dateme-manage",
+  "name": "@common-module/common-antd",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "main": "components/index.ts",
+  "module": "components/index.ts",
+  "types": "components/index.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -10,14 +13,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@common-module/common-antd": "workspace:*",
-    "@common-module/common-dev": "workspace:*",
-    "@common-module/common-util": "workspace:*",
+    "@ant-design/pro-components": "^2.6.49",
     "@common-module/common-react": "workspace:*",
-    "inversify": "^6.0.2",
+    "@common-module/common-api": "workspace:*",
+    "@common-module/common-config": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "reflect-metadata": "^0.2.2"
+    "antd": "^5.20.6",
+    "@ant-design/icons": "^5.4.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

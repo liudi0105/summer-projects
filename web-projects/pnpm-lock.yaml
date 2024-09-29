@@ -8,7 +8,7 @@ importers:
 
   .: {}
 
-  core-antd:
+  common-antd:
     dependencies:
       '@ant-design/icons':
         specifier: ^5.4.0
@@ -16,15 +16,15 @@ importers:
       '@ant-design/pro-components':
         specifier: ^2.6.49
         version: 2.7.18(antd@5.20.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(rc-field-form@2.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@liudi0105/core-api':
+      '@common-module/common-api':
         specifier: workspace:*
-        version: link:../core-api
-      '@liudi0105/core-config':
+        version: link:../common-api
+      '@common-module/common-config':
         specifier: workspace:*
-        version: link:../core-config
-      '@liudi0105/core-react':
+        version: link:../common-config
+      '@common-module/common-react':
         specifier: workspace:*
-        version: link:../core-react
+        version: link:../common-react
       antd:
         specifier: ^5.20.6
         version: 5.20.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -69,17 +69,17 @@ importers:
         specifier: ^5.4.1
         version: 5.4.5
 
-  core-api:
+  common-api:
     dependencies:
-      '@liudi0105/core-react':
+      '@common-module/common-react':
         specifier: workspace:*
-        version: link:../core-react
-      '@liudi0105/core-types':
+        version: link:../common-react
+      '@common-module/common-types':
         specifier: workspace:*
-        version: link:../core-types
-      '@liudi0105/core-util':
+        version: link:../common-types
+      '@common-module/common-util':
         specifier: workspace:*
-        version: link:../core-util
+        version: link:../common-util
     devDependencies:
       typescript:
         specifier: ^5.5.3
@@ -88,7 +88,7 @@ importers:
         specifier: ^5.4.1
         version: 5.4.5
 
-  core-config:
+  common-config:
     devDependencies:
       typescript:
         specifier: ^5.5.3
@@ -97,7 +97,7 @@ importers:
         specifier: ^5.4.1
         version: 5.4.5
 
-  core-dev:
+  common-dev:
     devDependencies:
       typescript:
         specifier: ^5.5.3
@@ -106,11 +106,11 @@ importers:
         specifier: ^5.4.1
         version: 5.4.5
 
-  core-react:
+  common-react:
     dependencies:
-      '@liudi0105/core-util':
+      '@common-module/common-util':
         specifier: workspace:*
-        version: link:../core-util
+        version: link:../common-util
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -161,7 +161,7 @@ importers:
         specifier: ^5.4.1
         version: 5.4.5
 
-  core-types:
+  common-types:
     devDependencies:
       typescript:
         specifier: ^5.5.3
@@ -170,11 +170,17 @@ importers:
         specifier: ^5.4.1
         version: 5.4.5
 
-  core-util:
+  common-util:
     dependencies:
       axios:
         specifier: ^1.7.7
         version: 1.7.7
+      inversify:
+        specifier: ^6.0.2
+        version: 6.0.2
+      reflect-metadata:
+        specifier: ^0.2.2
+        version: 0.2.2
     devDependencies:
       typescript:
         specifier: ^5.5.3
@@ -228,21 +234,30 @@ importers:
 
   dateme-manage:
     dependencies:
-      '@liudi0105/core-antd':
+      '@common-module/common-antd':
         specifier: workspace:*
-        version: link:../core-antd
-      '@liudi0105/core-dev':
+        version: link:../common-antd
+      '@common-module/common-dev':
         specifier: workspace:*
-        version: link:../core-dev
-      '@liudi0105/core-react':
+        version: link:../common-dev
+      '@common-module/common-react':
         specifier: workspace:*
-        version: link:../core-react
+        version: link:../common-react
+      '@common-module/common-util':
+        specifier: workspace:*
+        version: link:../common-util
+      inversify:
+        specifier: ^6.0.2
+        version: 6.0.2
       react:
         specifier: ^18.3.1
         version: 18.3.1
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
+      reflect-metadata:
+        specifier: ^0.2.2
+        version: 0.2.2
     devDependencies:
       '@eslint/js':
         specifier: ^9.9.0
@@ -2146,6 +2161,9 @@ packages:
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
 
+  inversify@6.0.2:
+    resolution: {integrity: sha512-i9m8j/7YIv4mDuYXUAcrpKPSaju/CIly9AHK5jvCBeoiM/2KEsuCQTTP+rzSWWpLYWRukdXFSl6ZTk2/uumbiA==}
+
   is-extglob@2.1.1:
     resolution: {integrity: sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==}
     engines: {node: '>=0.10.0'}
@@ -2631,6 +2649,9 @@ packages:
     resolution: {integrity: sha512-KiwVUcFu1RErkI97ywr8nvx8dNOpT03rbnma0SSalTYjkrPYaEajR4a/MRt6DZ46K6arDRbWMNHF+xH7G7n/8A==}
     peerDependencies:
       react: '*'
+
+  reflect-metadata@0.2.2:
+    resolution: {integrity: sha512-urBwgfrvVP/eAyXx4hluJivBKzuEbSQs9rKWCrCkbSxNv8mxPcUZKeuoF3Uy4mJl3Lwprp6yy5/39VWigZ4K6Q==}
 
   regenerator-runtime@0.14.1:
     resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
@@ -5470,6 +5491,8 @@ snapshots:
 
   inherits@2.0.4: {}
 
+  inversify@6.0.2: {}
+
   is-extglob@2.1.1: {}
 
   is-glob@4.0.3:
@@ -6016,6 +6039,8 @@ snapshots:
     dependencies:
       lodash: 4.17.21
       react: 18.3.1
+
+  reflect-metadata@0.2.2: {}
 
   regenerator-runtime@0.14.1: {}
 
