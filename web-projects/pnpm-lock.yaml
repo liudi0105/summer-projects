@@ -8,7 +8,7 @@ importers:
 
   .: {}
 
-  common-antd:
+  common-module/common-antd:
     dependencies:
       '@ant-design/icons':
         specifier: ^5.4.0
@@ -69,7 +69,7 @@ importers:
         specifier: ^5.4.1
         version: 5.4.5
 
-  common-api:
+  common-module/common-api:
     dependencies:
       '@common-module/common-react':
         specifier: workspace:*
@@ -88,7 +88,7 @@ importers:
         specifier: ^5.4.1
         version: 5.4.5
 
-  common-config:
+  common-module/common-config:
     devDependencies:
       typescript:
         specifier: ^5.5.3
@@ -97,7 +97,7 @@ importers:
         specifier: ^5.4.1
         version: 5.4.5
 
-  common-dev:
+  common-module/common-dev:
     devDependencies:
       typescript:
         specifier: ^5.5.3
@@ -106,7 +106,7 @@ importers:
         specifier: ^5.4.1
         version: 5.4.5
 
-  common-react:
+  common-module/common-react:
     dependencies:
       '@common-module/common-util':
         specifier: workspace:*
@@ -161,7 +161,7 @@ importers:
         specifier: ^5.4.1
         version: 5.4.5
 
-  common-types:
+  common-module/common-types:
     devDependencies:
       typescript:
         specifier: ^5.5.3
@@ -170,7 +170,7 @@ importers:
         specifier: ^5.4.1
         version: 5.4.5
 
-  common-util:
+  common-module/common-util:
     dependencies:
       '@common-module/common-config':
         specifier: workspace:*
@@ -192,14 +192,35 @@ importers:
         specifier: ^5.4.1
         version: 5.4.5
 
-  dateme-app:
+  common-module/dateme-manage:
     dependencies:
+      '@common-module/common-antd':
+        specifier: workspace:*
+        version: link:../common-antd
+      '@common-module/common-api':
+        specifier: workspace:*
+        version: link:../common-api
+      '@common-module/common-dev':
+        specifier: workspace:*
+        version: link:../common-dev
+      '@common-module/common-react':
+        specifier: workspace:*
+        version: link:../common-react
+      '@common-module/common-util':
+        specifier: workspace:*
+        version: link:../common-util
+      inversify:
+        specifier: ^6.0.2
+        version: 6.0.2
       react:
         specifier: ^18.3.1
         version: 18.3.1
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
+      reflect-metadata:
+        specifier: ^0.2.2
+        version: 0.2.2
     devDependencies:
       '@eslint/js':
         specifier: ^9.9.0
@@ -235,35 +256,14 @@ importers:
         specifier: ^5.4.1
         version: 5.4.5
 
-  dateme-manage:
+  dateme-app:
     dependencies:
-      '@common-module/common-antd':
-        specifier: workspace:*
-        version: link:../common-antd
-      '@common-module/common-api':
-        specifier: workspace:*
-        version: link:../common-api
-      '@common-module/common-dev':
-        specifier: workspace:*
-        version: link:../common-dev
-      '@common-module/common-react':
-        specifier: workspace:*
-        version: link:../common-react
-      '@common-module/common-util':
-        specifier: workspace:*
-        version: link:../common-util
-      inversify:
-        specifier: ^6.0.2
-        version: 6.0.2
       react:
         specifier: ^18.3.1
         version: 18.3.1
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
-      reflect-metadata:
-        specifier: ^0.2.2
-        version: 0.2.2
     devDependencies:
       '@eslint/js':
         specifier: ^9.9.0

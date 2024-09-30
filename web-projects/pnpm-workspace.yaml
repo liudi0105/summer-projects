@@ -1,11 +1,5 @@
 packages:
-  - "common-types"
-  - "common-api"
-  - "common-antd"
-  - "common-react"
-  - "common-config"
-  - "common-util"
-  - "common-dev"
+  - "common-module/*"
   - "dateme-manage"
   - "dateme-app"
   - "dbtool"
