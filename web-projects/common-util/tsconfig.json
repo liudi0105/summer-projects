@@ -17,8 +17,9 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "experimentalDecorators": true
   },
   "include": ["src"],
-  "references": [{ "path": "@liudi0105/core-config/tsconfig.json" }]
+  // "references": [{ "path": "./node_modules/@common-module/common-config/tsconfig.json" }]
 }

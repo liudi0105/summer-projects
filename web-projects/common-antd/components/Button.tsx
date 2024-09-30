@@ -1,4 +1,4 @@
-import { styled } from "@liudi0105/core-react";
+import { styled } from "@common-module/common-react";
 import { Button as AntButton, ButtonProps } from "antd";
 
 export type LButtonProps = {} & ButtonProps;

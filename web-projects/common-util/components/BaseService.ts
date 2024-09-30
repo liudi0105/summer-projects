@@ -1,7 +1,6 @@
-import { injectable, inject } from "inversify";
+import { inject } from "inversify";
 import { HttpClient } from "./HttpClient";
 
 export class BaseService {
-  // @inject
-  // private httpClient :HttpClient;
+  constructor(@inject(HttpClient) protected httpClient: HttpClient) {}
 }

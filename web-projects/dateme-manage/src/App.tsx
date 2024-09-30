@@ -1,10 +1,10 @@
-import { Ant, MenuPage, Pro } from "@liudi0105/core-antd";
+import { Ant, MenuPage, Pro } from "@common-module/common-antd";
 import {
   createBrowserRouter,
   createGlobalStyle,
   RouterProvider,
-} from "@liudi0105/core-react";
-import { routerMenu, RouterMenuItem } from "../../core-api/components";
+} from "@common-module/common-react";
+import { routerMenu, RouterMenuItem } from '@common-module/common-api'
 import "./App.css";
 import { RoleView } from "./views/RoleView";
 import { UserView } from "./views/UserView";

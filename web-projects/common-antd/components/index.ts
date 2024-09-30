@@ -9,4 +9,4 @@ export * from "@ant-design/icons";
 export * as Ant from "antd";
 export * as Pro from "@ant-design/pro-components";
 
-export * from "@liudi0105/core-react";
+export * from "@common-module/common-react";

@@ -1,6 +1,6 @@
 import { PageContainer } from "@ant-design/pro-components";
-import { routerMenu, RouterMenuItem } from "@liudi0105/core-api";
-import { Outlet, useNavigate } from "@liudi0105/core-react";
+import { routerMenu, RouterMenuItem } from "@common-module/common-api";
+import { Outlet, useNavigate } from "@common-module/common-react";
 import { Layout } from "./Layout";
 
 export type MenuPageProps = {

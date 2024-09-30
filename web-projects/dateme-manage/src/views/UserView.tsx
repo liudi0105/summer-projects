@@ -1,3 +1,9 @@
+import { Pro } from "@common-module/common-antd";
+
 export const UserView = () => {
-  return <div>user view</div>;
+  return <div>
+    <Pro.ProTable
+    >
+    </Pro.ProTable>
+  </div>;
 };

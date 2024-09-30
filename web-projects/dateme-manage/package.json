@@ -12,6 +12,7 @@
   "dependencies": {
     "@common-module/common-antd": "workspace:*",
     "@common-module/common-dev": "workspace:*",
+    "@common-module/common-api": "workspace:*",
     "@common-module/common-util": "workspace:*",
     "@common-module/common-react": "workspace:*",
     "inversify": "^6.0.2",
