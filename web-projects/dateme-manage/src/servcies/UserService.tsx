@@ -1,7 +1,7 @@
-import { HttpClient } from "@common-module/common-util";
-import { injectable, inject } from "inversify";
+import { BaseService } from "@common-module/common-util";
+import { injectable } from "inversify";
 
 @injectable()
-export class UserService {
+export class UserService extends BaseService {
 
 }

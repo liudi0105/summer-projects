@@ -9,4 +9,5 @@ export function deepCopy<T>(obj: T): T {
   return JSON.parse(JSON.stringify(obj));
 }
 
-export { HttpClient } from './HttpClient';
+export * from './HttpClient';
+export * from './BaseService'
