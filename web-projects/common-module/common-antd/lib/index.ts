@@ -4,6 +4,7 @@ export * from "./TriggerDrawer";
 export * from "./DrawerTable";
 export * from "./TriggerModal";
 export * from "./MenuPage";
+export * from "./Table";
 
 export * from "@ant-design/icons";
 export * as Ant from "antd";

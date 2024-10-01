@@ -12,7 +12,8 @@ repositories {
 dependencies {
     implementation platform("common-module:common-dependencies")
     annotationProcessor platform("common-module:common-dependencies")
-    implementation "common-module:common-jpa"
-    implementation "common-module:common-webmvc"
+    implementation "common-module:common-jpa:1.0"
+    implementation "common-module:common-webmvc:1.0"
     compileOnly "org.projectlombok:lombok"
+    annotationProcessor "org.projectlombok:lombok"
 }

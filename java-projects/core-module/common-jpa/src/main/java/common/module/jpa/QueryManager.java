@@ -1,8 +1,6 @@
 package common.module.jpa;
 
-import common.module.model.dto.AppPageResult;
 import common.module.util.AppJsons;
-import common.module.util.AppPages;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import org.hibernate.query.NativeQuery;
@@ -37,8 +35,10 @@ public class QueryManager {
         return AppJsons.convertUnderlineMapList(resultList, resultCLazz);
     }
 
-    public <R> AppPageResult<R> queryPage(SqlBuilder sqlBuilder, Class<R> resultClazz, Integer pageIndex, Integer pageSize) {
-        AppPages.checkPageParam(pageIndex, pageSize);
+    public <R> AppPageResult<R> queryPage(SqlBuilder sqlBuilder, Class<R> resultClazz, AppPageParam pageParam) {
+        Integer pageSize = pageParam.getPageSize();
+        Integer pageIndex = pageParam.getPageIndex();
+        AppPages.checkPageParam(pageParam);
 
         String countSql = "select count(1) from (" + sqlBuilder.toString() + ") as total";
         Query countQuery = entityManager.createNamedQuery(countSql).unwrap(org.hibernate.query.Query.class);

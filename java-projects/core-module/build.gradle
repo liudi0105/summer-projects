@@ -2,10 +2,16 @@ plugins {
     id 'java-library'
 }
 
-group = 'common-module'
-version = '1.0'
+allprojects {
+    group = 'common-module'
+    version = '1.0'
+}
 
 subprojects {
+    Boolean isJava = !project.name.contains("-dependencies")
+
+    apply plugin: isJava ? 'java-library' : 'java-platform'
+
     repositories {
         maven { url "https://maven.aliyun.com/repository/public" }
     }

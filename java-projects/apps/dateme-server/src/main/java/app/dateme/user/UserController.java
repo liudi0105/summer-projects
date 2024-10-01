@@ -1,4 +1,14 @@
 package app.dateme.user;
 
-public class UserController {
+import common.module.webmvc.ApiGroup;
+import common.module.jpa.BaseController;
+import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
+
+@ApiGroup(path = "auth/user")
+public class UserController implements BaseController<UserAccountService, UserAccountDTO> {
+
+    @Autowired
+    @Getter
+    private UserAccountService service;
 }

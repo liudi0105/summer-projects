@@ -1,6 +1,5 @@
 package common.module.jpa;
 
-import common.module.model.dto.BaseDTO;
 import common.module.util.AppJsons;
 import common.module.util.AppReflections;
 import common.module.util.SerializableFunction;

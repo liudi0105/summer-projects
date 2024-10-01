@@ -1,6 +1,3 @@
 packages:
   - "common-module/*"
-  - "dateme-manage"
-  - "dateme-app"
-  - "dbtool"
-  - "react-admin"
+  - "apps/*"

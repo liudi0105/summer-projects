@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@common-module/common-config": "workspace:*",
+    "@common-module/common-types": "workspace:*",
     "axios": "^1.7.7",
     "inversify": "^6.0.2",
     "reflect-metadata": "^0.2.2"
