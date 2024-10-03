@@ -1,21 +1,25 @@
 import { Table } from "@common-module/common-antd";
+import { AppPageResult } from "@common-module/common-types";
+import { useEffect, useState } from "react";
 import { container } from "../container";
-import { UserAccountService } from "../servcies/UserService";
-import { useEffect } from "react";
+import { UserAccountEntity, UserAccountService } from "../servcies/UserService";
 
 const userService = container.get(UserAccountService)
 
 export const UserView = () => {
+
+  const [data, setData] = useState<AppPageResult<UserAccountEntity>>()
+
   useEffect(() => {
     userService.listPaged({
       pageIndex: 1,
       pageSize: 10,
-    });
+    }).then(setData);
   }, []);
 
   return (
     <div>
-      <Table></Table>
+      <Table dataSource={data?.content ?? []}></Table>
     </div>
   );
 };

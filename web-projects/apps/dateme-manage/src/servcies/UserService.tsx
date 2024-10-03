@@ -1,4 +1,4 @@
-import { BaseService } from "@common-module/common-util";
+import { BaseService } from "@common-module/common-api";
 import { injectable } from "inversify";
 
 export type UserAccountEntity = {
@@ -8,5 +8,6 @@ export type UserAccountEntity = {
 
 @injectable()
 export class UserAccountService extends BaseService<UserAccountEntity> {
+  protected group = "user-account";
 
 }
