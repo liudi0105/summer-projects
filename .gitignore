@@ -3,3 +3,6 @@ node_modules
 .gradle/
 build/
 target/
+*.sqlite
+*.sqlite.s
+.DS_Store

@@ -65,6 +65,9 @@ importers:
       '@common-module/common-react':
         specifier: workspace:*
         version: link:../../common-module/common-react
+      '@common-module/common-types':
+        specifier: workspace:*
+        version: link:../../common-module/common-types
       '@common-module/common-util':
         specifier: workspace:*
         version: link:../../common-module/common-util
@@ -362,7 +365,22 @@ importers:
       '@common-module/common-util':
         specifier: workspace:*
         version: link:../common-util
+      inversify:
+        specifier: ^6.0.2
+        version: 6.0.2
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
     devDependencies:
+      '@types/react':
+        specifier: ^18.3.3
+        version: 18.3.6
+      '@types/react-dom':
+        specifier: ^18.3.0
+        version: 18.3.0
       typescript:
         specifier: ^5.5.3
         version: 5.6.2

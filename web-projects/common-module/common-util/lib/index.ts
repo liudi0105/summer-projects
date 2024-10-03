@@ -1,4 +1,4 @@
-export function joinPath(path: Array<string | undefined>) {
+export function joinPath(...path: string[]) {
   return path
     .filter((v) => v != undefined)
     .map((v) => v.replace(/^\/+$/g, ""))
@@ -10,4 +10,3 @@ export function deepCopy<T>(obj: T): T {
 }
 
 export * from "./HttpClient";
-export * from "./BaseService";

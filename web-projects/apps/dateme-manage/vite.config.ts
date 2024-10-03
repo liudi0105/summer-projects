@@ -8,4 +8,15 @@ export default defineConfig({
       tsDecorators: true,
     }),
   ],
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:8080/api",
+        rewrite: (path) => {
+          return path;
+        },
+        changeOrigin: true,
+      },
+    },
+  },
 });
