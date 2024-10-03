@@ -1,7 +1,8 @@
-import { inject } from "inversify";
+import { inject, injectable } from "inversify";
 import { HttpClient } from "./HttpClient";
 import { AppPageParam } from "@common-module/common-types";
 
+@injectable()
 export class BaseService<T> {
   constructor(@inject(HttpClient) protected httpClient: HttpClient) {}
 

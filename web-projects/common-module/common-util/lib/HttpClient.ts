@@ -1,10 +1,10 @@
-import { injectable } from "inversify";
+import { inject, injectable } from "inversify";
 
 export interface RequestConfig {
   url: string;
   method: "GET" | "POST";
   headers: Object;
-  body: Object | undefined
+  body: Object | undefined;
 }
 
 export type RequestProvider = {
@@ -13,7 +13,7 @@ export type RequestProvider = {
 
 @injectable()
 export class FetchRequestProvider implements RequestProvider {
-  request = <T>(config: RequestConfig): Promise<string> => {
+  request = (config: RequestConfig): Promise<string> => {
     config.headers = {
       ...config.headers,
     };
@@ -28,7 +28,7 @@ export class FetchRequestProvider implements RequestProvider {
 
 @injectable()
 export class HttpClient {
-  constructor(private provider: RequestProvider) {}
+  constructor(@inject(FetchRequestProvider) private provider: RequestProvider) {}
 
   postJsonForString(url: string, data?: object): Promise<string> {
     return this.request({
@@ -41,14 +41,14 @@ export class HttpClient {
     });
   }
 
-  postJsonForJson = async <T>(url: string, data?: object):Promise<T> => {
+  postJsonForJson = async <T>(url: string, data?: object): Promise<T> => {
     const resp = await this.postJsonForString(url, data);
-    return this.extractJson(resp)
-  }
+    return this.extractJson(resp);
+  };
 
   protected extractJson = async (text: string) => {
-    return text ? JSON.parse(text): null;
-  }
+    return text ? JSON.parse(text) : null;
+  };
 
   request = (config: RequestConfig): Promise<string> => {
     return this.provider.request(config);

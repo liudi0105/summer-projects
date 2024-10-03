@@ -1,9 +1,9 @@
-import * as Ant from "antd";
+import { ProTable, ProTableProps } from "@ant-design/pro-components";
 
-export type TableProps = {
-} & Ant.TableProps;
+export type TableProps<DataSource, U> = {
+} & ProTableProps<DataSource, U>;
 
-export const Table = (props: TableProps) => {
+export const Table = (props: TableProps<never, never>) => {
 
   const { rowKey = 'id' } = props
 

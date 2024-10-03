@@ -6,15 +6,16 @@ import { useEffect } from "react";
 const userService = container.get(UserAccountService)
 
 export const UserView = () => {
-
   useEffect(() => {
     userService.listPaged({
       pageIndex: 1,
-      pageSize: 10
-    })
-  }, [])
+      pageSize: 10,
+    });
+  }, []);
 
-  return <div>
-    <Table data></Table>
-  </div>;
+  return (
+    <div>
+      <Table></Table>
+    </div>
+  );
 };
