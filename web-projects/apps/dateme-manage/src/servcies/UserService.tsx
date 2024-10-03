@@ -8,6 +8,5 @@ export type UserAccountEntity = {
 
 @injectable()
 export class UserAccountService extends BaseService<UserAccountEntity> {
-  protected group = "user-account";
-
+  protected group = "auth/user-account";
 }

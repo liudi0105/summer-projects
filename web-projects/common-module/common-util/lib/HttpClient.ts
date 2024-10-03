@@ -8,7 +8,7 @@ export interface RequestConfig {
 }
 
 export type RequestProvider = {
-  request<T>(config: RequestConfig): Promise<string>;
+  request(config: RequestConfig): Promise<string>;
 };
 
 @injectable()
@@ -22,6 +22,10 @@ export class FetchRequestProvider implements RequestProvider {
       method: config.method,
       mode: "cors",
       credentials: "include",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: config.body ? JSON.stringify(config.body) : undefined
     }).then((v) => v.text());
   };
 }
@@ -33,7 +37,7 @@ export class HttpClient {
   postJsonForString(url: string, data?: object): Promise<string> {
     return this.request({
       url: url,
-      body: data ? JSON.stringify(data) : data,
+      body: data,
       method: "POST",
       headers: {
         "Content-Type": "application/json",
