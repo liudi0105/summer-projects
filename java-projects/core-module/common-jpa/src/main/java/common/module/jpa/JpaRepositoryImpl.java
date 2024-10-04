@@ -54,6 +54,12 @@ public class JpaRepositoryImpl<E extends BaseJpaPO, D extends BaseDTO> extends S
     }
 
     @Override
+    public D createOrUpdate(D d) {
+        E save = save(e(d));
+        return d(save);
+    }
+
+    @Override
     public List<D> list(ConditionBuilder<E> conditionBuilder) {
         List<E> all = findAll(conditionBuilder.toSpecification());
         return d(all);

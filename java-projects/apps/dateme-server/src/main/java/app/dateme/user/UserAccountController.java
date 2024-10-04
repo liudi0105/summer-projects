@@ -6,9 +6,10 @@ import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @ApiGroup(path = "auth/user-account")
-public class UserController implements BaseController<UserAccountService, UserAccountDTO> {
+public class UserAccountController implements BaseController<UserAccountService, UserAccountDTO> {
 
     @Autowired
     @Getter
     private UserAccountService service;
+
 }

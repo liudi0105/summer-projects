@@ -17,6 +17,10 @@ export abstract class BaseService<T> {
     return this.postJsonForJson<AppPageResult<T>>("list-paged", pageParam);
   };
 
+  public createOrUpdate = (pageParam: AppPageParam) => {
+    return this.postJsonForJson<AppPageResult<T>>("create-or-update", pageParam);
+  };
+
   protected preRequest = (url: string) => {
     return joinPath(getConfig().apiPrefix, this.group, url);
   };

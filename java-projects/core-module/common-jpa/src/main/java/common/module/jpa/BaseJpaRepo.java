@@ -7,6 +7,8 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public interface BaseJpaRepo<E extends BaseJpaPO, D extends BaseDTO> extends DefaultJpaRepo<E> {
+    D createOrUpdate(D d);
+
     List<D> list(ConditionBuilder<E> conditionBuilder);
 
     List<D> list(Function<ConditionBuilder<E>, ConditionBuilder<E>> conditionBuilderFunction);

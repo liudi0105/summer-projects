@@ -11,4 +11,9 @@ public interface BaseController<S, D extends BaseDTO> {
     default AppPageResult<D> listPaged(@RequestBody D param) {
         return getService().getRepo().pageQuery(param, QueryBuilder.getInstance());
     }
+
+    @Api(path = "create-or-update")
+    default D list(@RequestBody D param) {
+        return getService().getRepo().createOrUpdate(param);
+    }
 }
