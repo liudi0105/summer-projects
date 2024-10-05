@@ -35,7 +35,11 @@ export const UserView = () => {
 
   return (
     <div>
-      <CrudTable dataSource={data?.content ?? []} columns={columns} />
+      <CrudTable
+        service={userService}
+        dataSource={data?.content ?? []}
+        columns={columns}
+      />
     </div>
   );
 };

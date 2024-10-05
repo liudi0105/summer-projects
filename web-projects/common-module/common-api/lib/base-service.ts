@@ -7,8 +7,12 @@ import {
 import { inject, injectable } from "inversify";
 import { getConfig } from "./app-config";
 
+export type BaseEntity = {
+  id: string
+}
+
 @injectable()
-export abstract class BaseService<T> {
+export abstract class BaseService<T extends BaseEntity> {
   protected abstract group: string;
 
   constructor(@inject(HttpClient) protected httpClient: HttpClient) {}
@@ -17,8 +21,8 @@ export abstract class BaseService<T> {
     return this.postJsonForJson<AppPageResult<T>>("list-paged", pageParam);
   };
 
-  public createOrUpdate = (pageParam: AppPageParam) => {
-    return this.postJsonForJson<AppPageResult<T>>("create-or-update", pageParam);
+  public createOrUpdate = (param: BaseService<T>) => {
+    return this.postJsonForJson<AppPageResult<T>>("create-or-update", param);
   };
 
   protected preRequest = (url: string) => {
