@@ -5,7 +5,7 @@ import {
 } from "@ant-design/pro-components";
 import { Drawer, DrawerProps } from "antd";
 import { ReactNode, useState } from "react";
-import { Button } from "./Button";
+import { ButtonModalFrom } from "./Form";
 import { TriggerModal, TriggerModalProps } from "./Modal";
 
 export type TableProps<DataSource, ParamsType, ValueType> = {} & ProTableProps<
@@ -44,18 +44,8 @@ export const CrudTable = <
       toolbar={{
         ...toolbar,
         actions: [
-          ...(crud
-            ? [
-                <ModalTable
-                  drawerTitle="添加"
-                  trigger={<Button>添加</Button>}
-                />,
-                <ModalTable
-                  drawerTitle="更新"
-                  trigger={<Button>更新</Button>}
-                />,
-              ]
-            : []),
+          crud && <ButtonModalFrom title="添加"></ButtonModalFrom>,
+          crud && <ButtonModalFrom title="更新"></ButtonModalFrom>,
           ...actions,
         ],
       }}
@@ -110,22 +100,19 @@ export const ModalTable = <
 >(
   props: ModalTableProps<DataSource, Params, ValueType>
 ) => {
-  const { drawerWidth, trigger, drawerTitle, toolbar = {}, ...tableProps } = props;
+  const { drawerWidth, drawerTitle, ...tableProps } = props;
   const [open, setOpen] = useState(false);
 
   return (
-    <>
-      <div onClick={() => setOpen(true)}>{trigger}</div>
-      <TriggerModal
-        title={drawerTitle}
-        destroyOnClose
-        width={drawerWidth}
-        open={open}
-        onClose={() => setOpen(false)}
-        {...props}
-      >
-        <CrudTable {...tableProps} />
-      </TriggerModal>
-    </>
+    <TriggerModal
+      title={drawerTitle}
+      destroyOnClose
+      width={drawerWidth}
+      open={open}
+      onClose={() => setOpen(false)}
+      {...props}
+    >
+      <CrudTable {...tableProps} />
+    </TriggerModal>
   );
 };
