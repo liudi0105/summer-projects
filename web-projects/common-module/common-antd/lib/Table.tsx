@@ -12,40 +12,36 @@ import { ButtonModalFrom } from "./Form";
 import { TriggerModal, TriggerModalProps } from "./Modal";
 import { BaseEntity, BaseService } from "@common-module/common-api";
 
-export type TableProps<DataSource, ParamsType, ValueType> = {} & ProTableProps<
-  DataSource,
-  ParamsType,
-  ValueType
->;
+export type TableProps<
+  DataType,
+  ParamType extends ParamsType
+> = {} & ProTableProps<DataType, ParamType>;
 
 export const Table = <
-  DataSource extends Record<string, unknown>,
-  Params extends ParamsType,
-  ValueType = "text"
+  DataType extends BaseEntity,
+  ParamType extends ParamsType
 >(
-  props: TableProps<DataSource, Params, ValueType>
+  props: TableProps<DataType, ParamType>
 ) => {
   const { rowKey = "id" } = props;
   return <ProTable rowKey={rowKey} {...props}></ProTable>;
 };
 
 export type CrudTableProps<
-  DataSource,
-  ParamsType,
-  ValueType extends BaseEntity
+  DataType extends BaseEntity,
+  ParamType extends ParamsType
 > = {
   crud?: boolean;
   createForm?: ProFormInstance;
   updateForm?: ProFormInstance;
-  service: BaseService<ValueType>;
-} & TableProps<DataSource, ParamsType, ValueType>;
+  service: BaseService<DataType>;
+} & TableProps<DataType, ParamType>;
 
 export const CrudTable = <
-  DataSource extends Record<string, unknown>,
-  Params extends ParamsType,
-  ValueType extends BaseEntity
+  DataType extends BaseEntity,
+  Params extends ParamsType
 >(
-  props: CrudTableProps<DataSource, Params, ValueType>
+  props: CrudTableProps<DataType, Params>
 ) => {
   const { toolbar = {}, crud = true, columns = [], service } = props;
   const { actions = [] } = toolbar;
@@ -60,12 +56,11 @@ export const CrudTable = <
         ...toolbar,
         actions: [
           crud && (
-            <ButtonModalFrom
+            <ButtonModalFrom<DataType>
               title="添加"
               form={createForm}
-              onOk={async () => {
-                message.success("添加成功");
-                await service.createOrUpdate(await createForm.validateFields());
+              onFinish={async (values) => {
+                await service.createOrUpdate(values);
                 message.success("添加成功");
               }}
             >
@@ -81,7 +76,7 @@ export const CrudTable = <
             </ButtonModalFrom>
           ),
           crud && (
-            <ButtonModalFrom title="更新" form={updateForm}>
+            <ButtonModalFrom<DataType> title="更新" form={updateForm}>
               {columns
                 .filter((v) => !!v.title)
                 .map((v) => (
@@ -101,22 +96,20 @@ export const CrudTable = <
 };
 
 export type DrawerTableProps<
-  DataSource,
-  ParamsType,
-  ValueType extends BaseEntity
+  DataSource extends BaseEntity,
+  ParamType extends ParamsType
 > = {
   trigger: ReactNode;
   drawerTitle: ReactNode;
   drawerWidth?: string | number;
 } & DrawerProps &
-  CrudTableProps<DataSource, ParamsType, ValueType>;
+  CrudTableProps<DataSource, ParamType>;
 
 export const DrawerTable = <
-  DataSource extends Record<string, unknown>,
-  Params extends ParamsType,
-  ValueType extends BaseEntity
+  DataSource extends BaseEntity,
+  Params extends ParamsType
 >(
-  props: DrawerTableProps<DataSource, Params, ValueType>
+  props: DrawerTableProps<DataSource, Params>
 ) => {
   const { drawerWidth, trigger, drawerTitle } = props;
   const [open, setOpen] = useState(false);
@@ -138,22 +131,20 @@ export const DrawerTable = <
 };
 
 export type ModalTableProps<
-  DataSource,
-  ParamsType,
-  ValueType extends BaseEntity
+  DataSource extends BaseEntity,
+  ParamType extends ParamsType
 > = {
   trigger: ReactNode;
   drawerTitle: ReactNode;
   drawerWidth?: string | number;
 } & TriggerModalProps &
-  CrudTableProps<DataSource, ParamsType, ValueType>;
+  CrudTableProps<DataSource, ParamType>;
 
 export const ModalTable = <
-  DataSource extends Record<string, unknown>,
-  Params extends ParamsType,
-  ValueType extends BaseEntity
+  DataSource extends BaseEntity,
+  Params extends ParamsType
 >(
-  props: ModalTableProps<DataSource, Params, ValueType>
+  props: ModalTableProps<DataSource, Params>
 ) => {
   const { drawerWidth, drawerTitle, ...tableProps } = props;
   const [open, setOpen] = useState(false);

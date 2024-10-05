@@ -8,8 +8,8 @@ import { inject, injectable } from "inversify";
 import { getConfig } from "./app-config";
 
 export type BaseEntity = {
-  id: string
-}
+  id: string;
+};
 
 @injectable()
 export abstract class BaseService<T extends BaseEntity> {
@@ -21,7 +21,7 @@ export abstract class BaseService<T extends BaseEntity> {
     return this.postJsonForJson<AppPageResult<T>>("list-paged", pageParam);
   };
 
-  public createOrUpdate = (param: BaseService<T>) => {
+  public createOrUpdate = (param: T) => {
     return this.postJsonForJson<AppPageResult<T>>("create-or-update", param);
   };
 
