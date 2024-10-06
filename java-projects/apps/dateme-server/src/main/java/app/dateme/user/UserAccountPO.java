@@ -13,5 +13,6 @@ import lombok.Setter;
 @Table(name = "auth_user_account")
 public class UserAccountPO extends BaseJpaPO {
     private String username;
+    private String email;
     private String password;
 }

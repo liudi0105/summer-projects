@@ -4,5 +4,6 @@ export type AppPageParam = {
 };
 
 export type AppPageResult<T> = {
+  totalElements: number;
   content: T[];
-} & AppPageParam;
+};

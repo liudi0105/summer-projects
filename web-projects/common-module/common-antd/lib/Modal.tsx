@@ -6,7 +6,7 @@ export type TriggerModalProps = {
 } & ModalProps;
 
 export const TriggerModal = (props: TriggerModalProps) => {
-  const { trigger, onCancel = () => {} } = props;
+  const { trigger, onOk = () => {}, onCancel = () => {} } = props;
 
   const [open, setOpen] = useState(false);
 
@@ -19,6 +19,10 @@ export const TriggerModal = (props: TriggerModalProps) => {
         onCancel={(e) => {
           setOpen(false);
           onCancel(e);
+        }}
+        onOk={(e) => {
+          setOpen(false);
+          onOk(e);
         }}
       ></Modal>
     </>

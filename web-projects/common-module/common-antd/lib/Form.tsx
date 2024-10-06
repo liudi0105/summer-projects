@@ -1,49 +1,42 @@
 import * as Pro from "@ant-design/pro-components";
 import { BaseEntity } from "@common-module/common-api";
-import { Button } from "antd";
-import { ReactNode } from "react";
-import { TriggerModal } from "./Modal";
+import { Button, ButtonProps } from "antd";
 
 export type ModalFormProps<T> = {
-  trigger: ReactNode;
-  width?: number;
-} & Pro.ProFormProps<T>;
+} & Pro.ModalFormProps<T>;
 
 export const ModalForm = <T extends BaseEntity>(props: ModalFormProps<T>) => {
-  const {
-    layout = "horizontal",
-    labelCol = { span: 6 },
-    width = 500,
-    onFinish,
-  } = props;
+  const { layout = "horizontal", labelCol = { span: 6 }, width = 500 } = props;
 
   const [form] = Pro.ProForm.useForm(props.form);
 
   return (
-    <TriggerModal
+    <Pro.ModalForm
       {...props}
       width={width}
-      destroyOnClose={true}
-      onOk={async () => {
-        const values = await form?.validateFields();
-        onFinish && (await onFinish(values));
+      modalProps={{
+        destroyOnClose: true,
       }}
-    >
-      <Pro.ProForm<T>
-        form={form}
-        layout={layout}
-        labelCol={labelCol}
-        {...props}
-        submitter={false}
-      />
-    </TriggerModal>
+      form={form}
+      layout={layout}
+      labelCol={labelCol}
+    />
   );
 };
 
-export type ButtonModalFormProps<T> = Omit<ModalFormProps<T>, "trigger">;
+export type ButtonModalFormProps<T> = {
+  buttonSize?: ButtonProps["size"];
+} & Omit<ModalFormProps<T>, "trigger">;
 
 export const ButtonModalFrom = <T extends BaseEntity>(
   props: ButtonModalFormProps<T>
 ) => {
-  return <ModalForm<T> {...props} trigger={<Button>{props.title}</Button>} />;
+  const { buttonSize, ...formProps } = props;
+
+  return (
+    <ModalForm<T>
+      {...formProps}
+      trigger={<Button size={buttonSize}>{props.title}</Button>}
+    />
+  );
 };

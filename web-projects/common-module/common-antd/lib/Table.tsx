@@ -1,16 +1,19 @@
 import {
+  ActionType,
   ParamsType,
+  ProColumns,
   ProForm,
   ProFormInstance,
   ProFormText,
   ProTable,
   ProTableProps,
 } from "@ant-design/pro-components";
-import { Drawer, DrawerProps, message } from "antd";
-import { ReactNode, useState } from "react";
+import { BaseEntity, BaseService } from "@common-module/common-api";
+import { Drawer, DrawerProps, message, Space } from "antd";
+import { ReactNode, useRef, useState } from "react";
+import { Button } from "./Button";
 import { ButtonModalFrom } from "./Form";
 import { TriggerModal, TriggerModalProps } from "./Modal";
-import { BaseEntity, BaseService } from "@common-module/common-api";
 
 export type TableProps<
   DataType,
@@ -35,7 +38,11 @@ export type CrudTableProps<
   createForm?: ProFormInstance;
   updateForm?: ProFormInstance;
   service: BaseService<DataType>;
-} & TableProps<DataType, ParamType>;
+  columns: (ProColumns & {
+    create?: boolean;
+    readonly?: boolean;
+  })[];
+} & Omit<TableProps<DataType, ParamType>, "columns">;
 
 export const CrudTable = <
   DataType extends BaseEntity,
@@ -43,15 +50,114 @@ export const CrudTable = <
 >(
   props: CrudTableProps<DataType, Params>
 ) => {
-  const { toolbar = {}, crud = true, columns = [], service } = props;
+  const { toolbar = {}, crud = true, service } = props;
   const { actions = [] } = toolbar;
 
   const [createForm] = ProForm.useForm(props.createForm);
-  const [updateForm] = ProForm.useForm(props.updateForm);
+
+  const ref = useRef<ActionType>();
+
+  const columns: CrudTableProps<DataType, Params>["columns"] = [
+    ...props.columns,
+    {
+      dataIndex: "id",
+      title: "ID",
+      hidden: true,
+      search: false,
+      create: false,
+      readonly: true,
+    },
+    {
+      dataIndex: "createdBy",
+      title: "Created By",
+      hidden: true,
+      search: false,
+      create: false,
+      readonly: true,
+    },
+    {
+      dataIndex: "createdDate",
+      title: "Created Date",
+      hidden: true,
+      search: false,
+      create: false,
+      readonly: true,
+    },
+    {
+      dataIndex: "lastModifiedBy",
+      title: "Last Modified By",
+      hidden: true,
+      search: false,
+      create: false,
+      readonly: true,
+    },
+    {
+      dataIndex: "lastModifiedDate",
+      title: "Last Modified Date",
+      hidden: true,
+      search: false,
+      create: false,
+      readonly: true,
+    },
+    {
+      dataIndex: "version",
+      title: "Version",
+      hidden: true,
+      search: false,
+      create: false,
+      readonly: true,
+    },
+    {
+      title: "操作",
+      width: 80,
+      render: (_1, entity, _2, action) => {
+        return (
+          <Space>
+            <ButtonModalFrom<DataType>
+              title="更新"
+              buttonSize="small"
+              initialValues={entity}
+              onFinish={async (values) => {
+                await service.createOrUpdate(values);
+                message.success("更新成功");
+                return action?.reload();
+              }}
+            >
+              {columns
+                .filter((v) => v.dataIndex)
+                .map((v) => (
+                  <ProFormText
+                    readonly={v.readonly}
+                    key={v.dataIndex?.toString()}
+                    name={v.dataIndex}
+                    label={v.title?.toString() ?? v.dataIndex}
+                  />
+                ))}
+            </ButtonModalFrom>
+            <Button size="small" danger>
+              删除
+            </Button>
+          </Space>
+        );
+      },
+    },
+  ];
 
   return (
     <Table
       {...props}
+      actionRef={ref}
+      columns={columns}
+      request={async (params) => {
+        const result = await service.listPaged({
+          pageIndex: params.current ?? 1,
+          pageSize: params.pageSize ?? 10,
+        });
+        return {
+          data: result.content,
+          total: result.totalElements,
+        };
+      }}
       toolbar={{
         ...toolbar,
         actions: [
@@ -62,28 +168,18 @@ export const CrudTable = <
               onFinish={async (values) => {
                 await service.createOrUpdate(values);
                 message.success("添加成功");
+                return ref.current?.reload();
               }}
             >
               {columns
-                .filter((v) => !!v.title)
+                .filter(
+                  (v) => v.dataIndex && (v.create === undefined || v.create)
+                )
                 .map((v) => (
                   <ProFormText
                     key={v.dataIndex?.toString()}
                     name={v.dataIndex}
-                    label={v.title?.toString() ?? "Unknown"}
-                  />
-                ))}
-            </ButtonModalFrom>
-          ),
-          crud && (
-            <ButtonModalFrom<DataType> title="更新" form={updateForm}>
-              {columns
-                .filter((v) => !!v.title)
-                .map((v) => (
-                  <ProFormText
-                    key={v.dataIndex?.toString()}
-                    name={v.dataIndex}
-                    label={v.title?.toString() ?? "Unknown"}
+                    label={v.title?.toString() ?? v.dataIndex}
                   />
                 ))}
             </ButtonModalFrom>

@@ -9,5 +9,6 @@ import lombok.Setter;
 public class UserAccountDTO extends BaseDTO {
     private String username;
     private String password;
+    private String email;
     private String avatar;
 }
