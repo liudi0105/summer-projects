@@ -1,3 +1,9 @@
+pluginManagement {
+    repositories {
+        maven { url "https://maven.aliyun.com/repository/public" }
+    }
+}
+
 rootProject.name = 'java-projects'
 //includeBuild 'summer-modules'
 includeBuild ('core-module')
