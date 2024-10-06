@@ -1,44 +1,38 @@
 package common.module.jpa;
 
-import common.module.util.AppJsons;
 import common.module.util.SerializableFunction;
 import jakarta.persistence.EntityManager;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.Getter;
+import lombok.experimental.Accessors;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
+@Repository
+@Transactional(readOnly = true)
 public class JpaRepositoryImpl<E extends BaseJpaPO, D extends BaseDTO> extends SimpleJpaRepository<E, String> implements BaseJpaRepo<E, D> {
-    @Autowired
     private QueryManager queryManager;
 
+    @Getter
+    @Accessors(fluent = true)
     protected Class<D> dtoClass;
 
+    @Getter
+    @Accessors(fluent = true)
     protected Class<E> entityClass;
 
-    public JpaRepositoryImpl(JpaEntityInformation<E, ?> entityInformation, EntityManager entityManager) {
+    public JpaRepositoryImpl(JpaEntityInformation<E, ?> entityInformation, EntityManager entityManager, Class<?> repositoryInterface) {
         super(entityInformation, entityManager);
         entityClass = entityInformation.getJavaType();
-    }
-
-    public D d(E e) {
-        return AppJsons.convert(e, dtoClass);
-    }
-
-    public List<D> d(List<E> es) {
-        return AppJsons.convertList(es, dtoClass);
-    }
-
-    public E e(D d) {
-        return AppJsons.convert(d, entityClass);
-    }
-
-    public List<E> e(List<D> d) {
-        return AppJsons.convertList(d, entityClass);
+        ParameterizedType clazz = (ParameterizedType) repositoryInterface.getGenericInterfaces()[0];
+        dtoClass = (Class<D>) clazz.getActualTypeArguments()[1];
     }
 
     public ConditionBuilder<E> cb() {
@@ -54,6 +48,7 @@ public class JpaRepositoryImpl<E extends BaseJpaPO, D extends BaseDTO> extends S
     }
 
     @Override
+    @Transactional
     public D createOrUpdate(D d) {
         E save = save(e(d));
         return d(save);

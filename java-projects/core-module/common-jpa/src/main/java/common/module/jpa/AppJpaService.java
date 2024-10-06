@@ -10,25 +10,21 @@ import org.springframework.data.repository.core.EntityInformation;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-public class AppJpaService<R extends SimpleJpaRepo, E, I, D extends BaseDTO> implements JpaService {
+public class AppJpaService<R extends BaseJpaRepo<E, D>, E extends BaseJpaPO, D extends BaseDTO> implements JpaService {
 
+    @Autowired
     @Getter
     private R repo;
 
-    private EntityInformation<E, I> entityInformation;
+    private EntityInformation<E, String> entityInformation;
 
-    protected final Class<D> dtoClass = computeDtoClass();
+    public final Class<D> dtoClass = computeDtoClass();
 
-    protected final Class<E> entityClass = computeEntityClass();
+    public final Class<E> entityClass = computeEntityClass();
 
     protected final Class<R> repoClass = computeRepoClass();
 
     protected boolean convertWithJson;
-
-    @Autowired
-    public void setRepo(R repo) {
-        this.repo = repo;
-    }
 
     protected void useBeanUtils() {
         this.convertWithJson = false;

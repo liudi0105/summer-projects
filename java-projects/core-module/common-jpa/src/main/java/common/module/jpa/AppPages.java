@@ -15,6 +15,6 @@ public class AppPages {
             throw new RuntimeException("pageSize must great than 0");
         }
 
-        return PageRequest.of(pageIndex + 1, pageSize);
+        return PageRequest.of(pageIndex - 1, pageSize);
     }
 }

@@ -3,7 +3,9 @@ package common.module.jpa;
 import common.module.webmvc.Api;
 import org.springframework.web.bind.annotation.RequestBody;
 
-public interface BaseController<S, D extends BaseDTO> {
+import java.util.List;
+
+public interface BaseController<D extends BaseDTO> {
 
     BaseJpaService<?, ?, D> getService();
 
@@ -13,7 +15,9 @@ public interface BaseController<S, D extends BaseDTO> {
     }
 
     @Api(path = "create-or-update")
-    default D list(@RequestBody D param) {
-        return getService().getRepo().createOrUpdate(param);
+    default D createOrUpdate(@RequestBody D param) {
+        D orUpdate1 = getService().createOrUpdate(param);
+        List<?> all = getService().getRepo().findAll();
+        return orUpdate1;
     }
 }
