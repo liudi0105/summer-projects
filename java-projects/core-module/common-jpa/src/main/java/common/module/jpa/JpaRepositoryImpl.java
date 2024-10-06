@@ -22,8 +22,8 @@ public class JpaRepositoryImpl<E extends BaseJpaPO, D extends BaseDTO> extends S
 
     public JpaRepositoryImpl(JpaEntityInformation<E, ?> entityInformation, EntityManager entityManager) {
         super(entityInformation, entityManager);
+        entityClass = entityInformation.getJavaType();
     }
-
 
     public D d(E e) {
         return AppJsons.convert(e, dtoClass);
