@@ -2,8 +2,7 @@ import * as Pro from "@ant-design/pro-components";
 import { BaseEntity } from "@common-module/common-api";
 import { Button, ButtonProps } from "antd";
 
-export type ModalFormProps<T> = {
-} & Pro.ModalFormProps<T>;
+export type ModalFormProps<T> = {} & Pro.ModalFormProps<T>;
 
 export const ModalForm = <T extends BaseEntity>(props: ModalFormProps<T>) => {
   const { layout = "horizontal", labelCol = { span: 6 }, width = 500 } = props;
@@ -36,7 +35,11 @@ export const ButtonModalFrom = <T extends BaseEntity>(
   return (
     <ModalForm<T>
       {...formProps}
-      trigger={<Button size={buttonSize}>{props.title}</Button>}
+      trigger={
+        <Button size={buttonSize} type="link">
+          {props.title}
+        </Button>
+      }
     />
   );
 };

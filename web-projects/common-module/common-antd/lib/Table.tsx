@@ -9,7 +9,7 @@ import {
   ProTableProps,
 } from "@ant-design/pro-components";
 import { BaseEntity, BaseService } from "@common-module/common-api";
-import { Drawer, DrawerProps, message, Space } from "antd";
+import { Drawer, DrawerProps, message, Popconfirm, Space } from "antd";
 import { ReactNode, useRef, useState } from "react";
 import { Button } from "./Button";
 import { ButtonModalFrom } from "./Form";
@@ -26,8 +26,8 @@ export const Table = <
 >(
   props: TableProps<DataType, ParamType>
 ) => {
-  const { rowKey = "id" } = props;
-  return <ProTable rowKey={rowKey} {...props}></ProTable>;
+  const { rowKey = "id", options = false } = props;
+  return <ProTable {...props} rowKey={rowKey} options={options}></ProTable>;
 };
 
 export type CrudTableProps<
@@ -109,6 +109,7 @@ export const CrudTable = <
     },
     {
       title: "操作",
+      search: false,
       width: 80,
       render: (_1, entity, _2, action) => {
         return (
@@ -120,7 +121,8 @@ export const CrudTable = <
               onFinish={async (values) => {
                 await service.createOrUpdate(values);
                 message.success("更新成功");
-                return action?.reload();
+                action?.reload();
+                return true;
               }}
             >
               {columns
@@ -134,9 +136,16 @@ export const CrudTable = <
                   />
                 ))}
             </ButtonModalFrom>
-            <Button size="small" danger>
-              删除
-            </Button>
+            <Popconfirm
+              title={`确定要删除[${entity.email}]吗？`}
+              onConfirm={() => {
+                // service.createOrUpdate(entity);
+              }}
+            >
+              <Button size="small" type="link" danger>
+                删除
+              </Button>
+            </Popconfirm>
           </Space>
         );
       },
@@ -168,7 +177,8 @@ export const CrudTable = <
               onFinish={async (values) => {
                 await service.createOrUpdate(values);
                 message.success("添加成功");
-                return ref.current?.reload();
+                ref.current?.reload();
+                return true;
               }}
             >
               {columns
