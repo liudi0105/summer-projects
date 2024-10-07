@@ -25,18 +25,19 @@ export const ModalForm = <T extends BaseEntity>(props: ModalFormProps<T>) => {
 
 export type ButtonModalFormProps<T> = {
   buttonSize?: ButtonProps["size"];
+  buttonType?: ButtonProps["type"];
 } & Omit<ModalFormProps<T>, "trigger">;
 
 export const ButtonModalFrom = <T extends BaseEntity>(
   props: ButtonModalFormProps<T>
 ) => {
-  const { buttonSize, ...formProps } = props;
+  const { buttonSize, buttonType, ...formProps } = props;
 
   return (
     <ModalForm<T>
       {...formProps}
       trigger={
-        <Button size={buttonSize} type="link">
+        <Button size={buttonSize} type={buttonType}>
           {props.title}
         </Button>
       }

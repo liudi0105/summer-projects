@@ -117,6 +117,7 @@ export const CrudTable = <
             <ButtonModalFrom<DataType>
               title="更新"
               buttonSize="small"
+              buttonType="link"
               initialValues={entity}
               onFinish={async (values) => {
                 await service.createOrUpdate(values);
@@ -155,6 +156,7 @@ export const CrudTable = <
   return (
     <Table
       {...props}
+      size="small"
       actionRef={ref}
       columns={columns}
       request={async (params) => {

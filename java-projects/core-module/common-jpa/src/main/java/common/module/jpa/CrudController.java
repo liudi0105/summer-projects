@@ -3,9 +3,7 @@ package common.module.jpa;
 import common.module.webmvc.Api;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.List;
-
-public interface BaseController<D extends BaseDTO> {
+public interface CrudController<D extends BaseDTO> {
 
     BaseJpaService<?, ?, D> getService();
 
@@ -16,8 +14,11 @@ public interface BaseController<D extends BaseDTO> {
 
     @Api(path = "create-or-update")
     default D createOrUpdate(@RequestBody D param) {
-        D orUpdate1 = getService().createOrUpdate(param);
-        List<?> all = getService().getRepo().findAll();
-        return orUpdate1;
+        return getService().createOrUpdate(param);
+    }
+
+    @Api(path = "delete-by-id")
+    default void deleteById(@RequestBody String id) {
+        getService().getRepo().deleteById(id);
     }
 }
