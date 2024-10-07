@@ -1,10 +1,10 @@
-import { Ant, MenuPage, Pro } from "@common-module/common-antd";
+import { ConfigProvider, FloatButtonGroup, MenuPage } from "@common-module/common-antd";
+import { routerMenu, RouterMenuItem } from "@common-module/common-api";
 import {
   createBrowserRouter,
   createGlobalStyle,
   RouterProvider,
 } from "@common-module/common-react";
-import { routerMenu, RouterMenuItem } from '@common-module/common-api'
 import "./App.css";
 import { RoleView } from "./views/RoleView";
 import { UserView } from "./views/UserView";
@@ -55,8 +55,8 @@ const AppRouter = createBrowserRouter([
     path: "*",
     element: (
       <MenuPage
-        title="sss"
-        userEmail="ssdf"
+        title="Dateme"
+        userEmail="小明"
         routerMenuItems={router}
       ></MenuPage>
     ),
@@ -66,16 +66,11 @@ const AppRouter = createBrowserRouter([
 
 function App() {
   return (
-    <Ant.ConfigProvider
-      theme={{
-        algorithm: [Ant.theme.darkAlgorithm, Ant.theme.compactAlgorithm],
-      }}
-    >
-      <Pro.ProConfigProvider dark={true}>
-        <RouterProvider router={AppRouter} />
-        <SGlobalStyle />
-      </Pro.ProConfigProvider>
-    </Ant.ConfigProvider>
+    <ConfigProvider>
+      <RouterProvider router={AppRouter} />
+      <SGlobalStyle />
+      <FloatButtonGroup />
+    </ConfigProvider>
   );
 }
 

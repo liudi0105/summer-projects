@@ -1,6 +1,7 @@
 import { PageContainer } from "@ant-design/pro-components";
 import { routerMenu, RouterMenuItem } from "@common-module/common-api";
 import { Outlet, useNavigate } from "@common-module/common-react";
+import { Select } from "antd";
 import { Layout } from "./Layout";
 
 export type MenuPageProps = {
@@ -41,6 +42,17 @@ export const MenuPage = (props: MenuPageProps) => {
           {title}
         </a>
       )}
+      actionsRender={() => [
+        <Select
+          style={{ width: 100 }}
+          suffixIcon={null}
+          options={["small", "middle", "large"].map((v) => ({
+            label: v,
+            value: v,
+          }))}
+          defaultValue="small"
+        />,
+      ]}
       fixSiderbar={true}
       defaultCollapsed={false}
       menu={{ defaultOpenAll: false, type: "sub" }}
