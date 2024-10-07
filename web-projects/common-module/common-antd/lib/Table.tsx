@@ -111,7 +111,7 @@ export const CrudTable = <
       title: "操作",
       search: false,
       width: 80,
-      render: (_1, entity, _2, action) => {
+      render: (_1, entity: BaseEntity, _2, action) => {
         return (
           <Space>
             <ButtonModalFrom<DataType>
@@ -122,7 +122,7 @@ export const CrudTable = <
               onFinish={async (values) => {
                 await service.createOrUpdate(values);
                 message.success("更新成功");
-                action?.reload();
+                await action?.reload();
                 return true;
               }}
             >
@@ -138,9 +138,12 @@ export const CrudTable = <
                 ))}
             </ButtonModalFrom>
             <Popconfirm
-              title={`确定要删除[${entity.email}]吗？`}
-              onConfirm={() => {
-                // service.createOrUpdate(entity);
+              title={`确定要删除[${entity.id}]吗？`}
+              onConfirm={async () => {
+                await service.deleteById(entity.id);
+                message.success("删除成功");
+                await action?.reload();
+                return true;
               }}
             >
               <Button size="small" type="link" danger>
