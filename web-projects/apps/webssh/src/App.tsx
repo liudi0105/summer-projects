@@ -1,7 +1,6 @@
 import {
   ConfigProvider,
-  FloatButtonGroup,
-  MenuPage,
+  FloatButtonGroup
 } from "@common-module/common-antd";
 import { routerMenu, RouterMenuItem } from "@common-module/common-api";
 import {
@@ -10,6 +9,7 @@ import {
   RouterProvider,
 } from "@common-module/common-react";
 import "./App.css";
+import { Layout } from "./pages/Layout";
 import { Main } from "./pages/MainPage";
 
 const SGlobalStyle = createGlobalStyle`
@@ -57,11 +57,7 @@ const AppRouter = createBrowserRouter([
   {
     path: "*",
     element: (
-      <MenuPage
-        title="Dateme"
-        userEmail="小明"
-        routerMenuItems={router}
-      ></MenuPage>
+    <Layout />
     ),
     children: routerMenu(router).routes,
   },
