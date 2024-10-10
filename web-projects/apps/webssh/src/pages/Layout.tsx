@@ -1,29 +1,23 @@
+import { createRef, useEffect } from "react";
+import { openTerminal } from "../util/terminal";
+import { styled } from "@common-module/common-react";
+
+const Sdiv = styled.div``;
+
 export const Layout = () => {
-  return <div></div>;
+  const ref = createRef<HTMLDivElement>();
+  useEffect(() => {
+    openTerminal(
+      {
+        operate: "connect",
+        host: "",
+        port: 22, //端口号
+        username: "root", //用户名
+        password: "",
+      },
+      ref.current!
+    );
+  }, []);
+
+  return <Sdiv ref={ref}></Sdiv>;
 };
-
-export interface Handler {
-
-  onData: (data: string) => void
-
-  onClose: () => void
-
-}
-
-export class Session {
-  constructor(
-    private prop: {
-      host: string;
-      port: number;
-      username: string;
-      password: string;
-    }
-  ) {}
-
-  connect = () => {
-    const endpoint = "ws://127.0.0.1:8080/webssh";
-    const connection = new WebSocket(endpoint);
-    connection.onopen = () => {
-    }
-  };
-}
