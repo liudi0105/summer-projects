@@ -4,8 +4,13 @@ import com.google.common.base.CaseFormat;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
+import java.util.UUID;
 
 public class AppStrings {
+
+    public static String uuid() {
+        return UUID.randomUUID().toString().replace("_", "");
+    }
 
     public static String underline(String str) {
         return CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, str);

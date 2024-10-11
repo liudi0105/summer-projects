@@ -1,6 +1,5 @@
-package app.webssh.interceptor;
+package app.webssh;
 
-import app.webssh.constant.ConstantPool;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.http.server.ServletServerHttpRequest;
@@ -11,13 +10,6 @@ import java.util.Map;
 import java.util.UUID;
 
 public class WebSocketInterceptor implements HandshakeInterceptor {
-    /**
-     * @Description: Handler处理前调用
-     * @Param: [serverHttpRequest, serverHttpResponse, webSocketHandler, map]
-     * @return: boolean
-     * @Author: NoCortY
-     * @Date: 2020/3/1
-     */
     @Override
     public boolean beforeHandshake(ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse, WebSocketHandler webSocketHandler, Map<String, Object> map) throws Exception {
         if (serverHttpRequest instanceof ServletServerHttpRequest) {
@@ -25,7 +17,7 @@ public class WebSocketInterceptor implements HandshakeInterceptor {
             //生成一个UUID
             String uuid = UUID.randomUUID().toString().replace("-","");
             //将uuid放到websocketsession中
-            map.put(ConstantPool.USER_UUID_KEY, uuid);
+            map.put(Consts.SSH_SESSION_ID, uuid);
             return true;
         } else {
             return false;

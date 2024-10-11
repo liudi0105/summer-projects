@@ -1,18 +1,11 @@
-package app.webssh.config;
+package app.webssh;
 
-import app.webssh.interceptor.WebSocketInterceptor;
-import app.webssh.websocket.WebSSHWebSocketHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 
-/**
-* @Description: websocket配置
-* @Author: NoCortY
-* @Date: 2020/3/8
-*/
 @Configuration
 @EnableWebSocket
 public class WebSSHWebSocketConfig implements WebSocketConfigurer{

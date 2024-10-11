@@ -15,5 +15,6 @@ dependencies {
     compileOnly("org.projectlombok:lombok")
     implementation("com.jcraft:jsch")
     implementation("common-module:common-webmvc")
+    implementation("common-module:common-util")
     annotationProcessor("org.projectlombok:lombok")
 }

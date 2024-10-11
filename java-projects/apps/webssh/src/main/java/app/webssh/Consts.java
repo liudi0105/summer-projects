@@ -1,15 +1,10 @@
-package app.webssh.constant;
+package app.webssh;
 
-/**
-* @Description: 常量池
-* @Author: NoCortY
-* @Date: 2020/3/8
-*/
-public class ConstantPool {
+public class Consts {
     /**
      * 随机生成uuid的key名
      */
-    public static final String USER_UUID_KEY = "user_uuid";
+    public static final String SSH_SESSION_ID = "user_uuid";
     /**
      * 发送指令：连接
      */
