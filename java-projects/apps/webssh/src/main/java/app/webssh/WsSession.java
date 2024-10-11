@@ -66,7 +66,7 @@ public class WsSession {
             //断开连接
             if (sshSession.getChannel() != null) sshSession.getChannel().disconnect();
             //map中移除
-            sshMap.get(userId);
+            sshMap.remove(userId);
         }
     }
 }
