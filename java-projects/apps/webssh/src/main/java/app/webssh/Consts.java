@@ -4,7 +4,7 @@ public class Consts {
     /**
      * 随机生成uuid的key名
      */
-    public static final String SSH_SESSION_ID = "user_uuid";
+    public static final String SSH_SESSION_ID = "session_id";
     /**
      * 发送指令：连接
      */

@@ -39,11 +39,10 @@ public class SshSession {
     }
 
     public void connectToSSH(SshConnectMessage sshConnectMessage) throws JSchException, IOException {
-        Session session = null;
         Properties config = new Properties();
         config.put("StrictHostKeyChecking", "no");
         //获取jsch的会话
-        session = getJSch().getSession(sshConnectMessage.getUsername(), sshConnectMessage.getHost(), sshConnectMessage.getPort());
+        Session session = getJSch().getSession(sshConnectMessage.getUsername(), sshConnectMessage.getHost(), sshConnectMessage.getPort());
         session.setConfig(config);
         //设置密码
         session.setPassword(sshConnectMessage.getPassword());
@@ -63,11 +62,10 @@ public class SshSession {
         transToSSH(channel, "\r");
 
         //读取终端返回的信息流
-        InputStream inputStream = channel.getInputStream();
-        try {
+        try (InputStream inputStream = channel.getInputStream()) {
             //循环读取
             byte[] buffer = new byte[1024];
-            int i = 0;
+            int i;
             //如果没有数据来，线程会一直阻塞在这个地方等待数据。
             while ((i = inputStream.read(buffer)) != -1) {
                 webSocketSession.sendMessage(Arrays.copyOfRange(buffer, 0, i));
@@ -77,9 +75,6 @@ public class SshSession {
             //断开连接后关闭会话
             session.disconnect();
             channel.disconnect();
-            if (inputStream != null) {
-                inputStream.close();
-            }
         }
     }
 
