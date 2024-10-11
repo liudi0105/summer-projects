@@ -10,10 +10,10 @@ export const Layout = () => {
     openTerminal(
       {
         operate: "connect",
-        host: "",
+        host: "155.138.165.208", //IP
         port: 22, //端口号
         username: "root", //用户名
-        password: "",
+        password: "}D5rmJNJx.(Z3,KM", //密码
       },
       ref.current!
     );
