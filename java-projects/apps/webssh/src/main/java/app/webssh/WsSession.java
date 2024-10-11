@@ -3,16 +3,18 @@ package app.webssh;
 import com.jcraft.jsch.JSchException;
 import common.module.util.AppJsons;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
 import java.io.IOException;
 
-import static app.webssh.WebSSHService.executorService;
+import static app.webssh.SshSessionManager.executorService;
 
 @AllArgsConstructor
 @Slf4j
+@Getter
 public class WsSession {
 
     private WebSocketSession session;
@@ -24,28 +26,24 @@ public class WsSession {
     }
 
     public void handleReceiveWebsocketMessage(String buffer) {
-        WebSSHData webSSHData = AppJsons.fromJson(buffer, WebSSHData.class);
+        SshConnectMessage sshConnectMessage = AppJsons.fromJson(buffer, SshConnectMessage.class);
         String userId = String.valueOf(session.getAttributes().get(Consts.SSH_SESSION_ID));
-        if (Consts.WEBSSH_OPERATE_CONNECT.equals(webSSHData.getOperate())) {
+        if (Consts.WEBSSH_OPERATE_CONNECT.equals(sshConnectMessage.getOperate())) {
             //找到刚才存储的ssh连接对象
-            SshSession sshSession = (SshSession) sshMap.get(userId);
+            SshSession sshSession = sshMap.get(userId);
             //启动线程异步处理
-            WebSSHData finalWebSSHData = webSSHData;
-            executorService.execute(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        sshSession.connectToSSH(sshSession, finalWebSSHData, session);
-                    } catch (JSchException | IOException e) {
-                        log.error("webssh连接异常");
-                        log.error("异常信息:{}", e.getMessage());
-                        close();
-                    }
+            executorService.execute(() -> {
+                try {
+                    sshSession.connectToSSH(sshConnectMessage);
+                } catch (JSchException | IOException e) {
+                    log.error("webssh连接异常");
+                    log.error("异常信息:{}", e.getMessage());
+                    close();
                 }
             });
-        } else if (Consts.WEBSSH_OPERATE_COMMAND.equals(webSSHData.getOperate())) {
-            String command = webSSHData.getCommand();
-            SshSession sshSession = (SshSession) sshMap.get(userId);
+        } else if (Consts.WEBSSH_OPERATE_COMMAND.equals(sshConnectMessage.getOperate())) {
+            String command = sshConnectMessage.getCommand();
+            SshSession sshSession = sshMap.get(userId);
             if (sshSession != null) {
                 try {
                     sshSession.transToSSH(sshSession.getChannel(), command);

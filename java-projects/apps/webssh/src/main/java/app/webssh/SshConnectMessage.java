@@ -7,7 +7,7 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 @Accessors(chain = true)
-public class WebSSHData {
+public class SshConnectMessage {
     //操作
     private String operate;
     private String host;

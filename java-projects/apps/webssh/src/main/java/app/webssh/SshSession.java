@@ -7,8 +7,6 @@ import com.jcraft.jsch.Session;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import org.springframework.web.socket.TextMessage;
-import org.springframework.web.socket.WebSocketSession;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,9 +18,10 @@ import java.util.Properties;
 @Getter
 @Accessors(chain = true)
 public class SshSession {
-    private WebSocketSession webSocketSession;
+    private WsSession webSocketSession;
     private JSch jSch;
     private Channel channel;
+    private SshSessionManager sshSessionManager;
 
     public void transToSSH(Channel channel, String command) throws IOException {
         if (channel != null) {
@@ -32,15 +31,22 @@ public class SshSession {
         }
     }
 
-    public void connectToSSH(SshSession sshSession, WebSSHData webSSHData, WebSocketSession webSocketSession) throws JSchException, IOException {
+    public void initConnection() {
+        setJSch(new JSch());
+        String uuid = String.valueOf(webSocketSession.getSession().getAttributes().get(Consts.SSH_SESSION_ID));
+        //将这个ssh连接信息放入map中
+        sshSessionManager.put(uuid, this);
+    }
+
+    public void connectToSSH(SshConnectMessage sshConnectMessage) throws JSchException, IOException {
         Session session = null;
         Properties config = new Properties();
         config.put("StrictHostKeyChecking", "no");
         //获取jsch的会话
-        session = sshSession.getJSch().getSession(webSSHData.getUsername(), webSSHData.getHost(), webSSHData.getPort());
+        session = getJSch().getSession(sshConnectMessage.getUsername(), sshConnectMessage.getHost(), sshConnectMessage.getPort());
         session.setConfig(config);
         //设置密码
-        session.setPassword(webSSHData.getPassword());
+        session.setPassword(sshConnectMessage.getPassword());
         //连接  超时时间30s
         session.connect(30000);
 
@@ -51,7 +57,7 @@ public class SshSession {
         channel.connect(3000);
 
         //设置channel
-        sshSession.setChannel(channel);
+        setChannel(channel);
 
         //转发消息
         transToSSH(channel, "\r");
@@ -64,7 +70,7 @@ public class SshSession {
             int i = 0;
             //如果没有数据来，线程会一直阻塞在这个地方等待数据。
             while ((i = inputStream.read(buffer)) != -1) {
-                sendMessage(webSocketSession, Arrays.copyOfRange(buffer, 0, i));
+                webSocketSession.sendMessage(Arrays.copyOfRange(buffer, 0, i));
             }
 
         } finally {
@@ -77,7 +83,4 @@ public class SshSession {
         }
     }
 
-    public void sendMessage(WebSocketSession session, byte[] buffer) throws IOException {
-        session.sendMessage(new TextMessage(buffer));
-    }
 }
