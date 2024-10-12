@@ -1,10 +1,5 @@
-const { test: denoTest } = Deno;
+const { test } = Deno;
 
-export const test = (name: string, fn: () => void) => {
-  denoTest({ name, fn });
-};
-
-denoTest({
-  name: "test list",
-  fn() {},
+test("aaa", function sss() {
+  console.log("aaa");
 });
