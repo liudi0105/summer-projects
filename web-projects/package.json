@@ -7,10 +7,6 @@
     "date-me-manage": "pnpm --filter=date-me-manage dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "workspaces": [
-    "./apps/*",
-    "./common-module/*"
-  ],
   "keywords": [],
   "author": "",
   "license": "ISC"
