@@ -1,6 +1,7 @@
 import { createRef, useEffect } from "react";
-import { openTerminal } from "../util/terminal";
 import { styled } from "@common-module/common-react";
+import { openTerminal } from "../util/terminal.ts";
+import React from "react";
 
 const Sdiv = styled.div``;
 

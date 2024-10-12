@@ -1,6 +1,6 @@
+import React from "react";
 import { createRef, useEffect } from "react";
-import { openTerminal } from "../util/terminal";
-
+import { openTerminal } from "../util/terminal.ts";
 
 export const Main = () => {
   const ref = createRef<HTMLDivElement>();
@@ -14,7 +14,7 @@ export const Main = () => {
         password: "}D5rmJNJx.(Z3,KM", //密码
       },
       ref.current!
-    )
+    );
   }, []);
 
   return <div ref={ref}></div>;
