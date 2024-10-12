@@ -1,9 +1,9 @@
 import { Terminal } from "@xterm/xterm";
-import { WsConnection } from "./websocket";
 import { FitAddon } from "@xterm/addon-fit";
 import { WebglAddon } from "@xterm/addon-webgl";
 import { WebLinksAddon } from "@xterm/addon-web-links";
 import { ClipboardAddon } from "@xterm/addon-clipboard";
+import { WsConnection } from "./websocket.ts";
 
 interface OpenTerminalOptions {
   operate: "connect";

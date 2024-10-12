@@ -1,6 +1,7 @@
 import {
   ConfigProvider,
-  FloatButtonGroup
+  FloatButtonGroup,
+  MenuPage,
 } from "@common-module/common-antd";
 import { routerMenu, RouterMenuItem } from "@common-module/common-api";
 import {
@@ -11,6 +12,8 @@ import {
 import "./App.css";
 import { Layout } from "./pages/Layout";
 import { Main } from "./pages/MainPage";
+import { UserService } from "./services";
+import { UserView } from "./pages/UserView";
 
 const SGlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -38,7 +41,7 @@ const router: RouterMenuItem[] = [
       {
         path: "user",
         name: "用户管理",
-        element: <Main />,
+        element: <UserView />,
       },
       {
         path: "role",
@@ -55,9 +58,17 @@ const AppRouter = createBrowserRouter([
     element: "login",
   },
   {
+    path: "terminal",
+    element: <Layout />,
+  },
+  {
     path: "*",
     element: (
-    <Layout />
+      <MenuPage
+        title="Dateme"
+        userEmail="小明"
+        routerMenuItems={router}
+      ></MenuPage>
     ),
     children: routerMenu(router).routes,
   },

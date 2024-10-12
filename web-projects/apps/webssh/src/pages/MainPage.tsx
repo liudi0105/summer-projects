@@ -1,4 +1,3 @@
-import React from "react";
 import { createRef, useEffect } from "react";
 import { openTerminal } from "../util/terminal.ts";
 

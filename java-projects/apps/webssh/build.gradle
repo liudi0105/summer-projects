@@ -14,7 +14,10 @@ dependencies {
     annotationProcessor(platform("common-module:common-dependencies"))
     compileOnly("org.projectlombok:lombok")
     implementation("com.jcraft:jsch")
+    runtimeOnly("org.xerial:sqlite-jdbc")
+    runtimeOnly("org.hibernate.orm:hibernate-community-dialects")
     implementation("common-module:common-webmvc")
+    implementation("common-module:common-jpa")
     implementation("common-module:common-util")
     annotationProcessor("org.projectlombok:lombok")
 }

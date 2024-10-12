@@ -1,9 +1,46 @@
-import { createRef, useEffect } from "react";
+import { Ant } from "@common-module/common-antd";
 import { styled } from "@common-module/common-react";
+import { createRef, useEffect } from "react";
 import { openTerminal } from "../util/terminal.ts";
-import React from "react";
 
-const Sdiv = styled.div``;
+const STerminalBox = styled.div``;
+
+const SExplore = styled.div`
+  width: 200px;
+`;
+
+const SExploreItem = styled.div`
+  height: 24px;
+  background-color: #000;
+  color: #fff;
+  margin-bottom: 2px;
+  border-collapse: collapse;
+  cursor: pointer;
+`;
+
+export const ExploreItem = (props: {
+  open: boolean
+  current: boolean
+}) => {
+  return <SExploreItem></SExploreItem>;
+};
+
+const Explore = () => {
+  return (
+    <SExplore>
+      <SExploreItem>10.128.29.1</SExploreItem>
+      <SExploreItem>10.128.29.1</SExploreItem>
+      <SExploreItem>10.128.29.1</SExploreItem>
+      <SExploreItem>10.128.29.1</SExploreItem>
+      <SExploreItem>10.128.29.1</SExploreItem>
+      <SExploreItem>10.128.29.1</SExploreItem>
+    </SExplore>
+  );
+};
+
+const OpenTab = () => {
+  return <div style={{ height: 28 }}></div>;
+};
 
 export const Layout = () => {
   const ref = createRef<HTMLDivElement>();
@@ -20,5 +57,13 @@ export const Layout = () => {
     );
   }, []);
 
-  return <Sdiv ref={ref}></Sdiv>;
+  return (
+    <Ant.Flex>
+      <Explore />
+      <Ant.Flex vertical style={{ width: "100%", height: "100%" }}>
+        <OpenTab />
+        <STerminalBox ref={ref}></STerminalBox>
+      </Ant.Flex>
+    </Ant.Flex>
+  );
 };
