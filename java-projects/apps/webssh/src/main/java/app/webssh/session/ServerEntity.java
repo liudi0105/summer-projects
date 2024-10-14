@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Accessors(chain = true)
@@ -18,4 +20,5 @@ public class ServerEntity extends BaseJpaPO {
     private String username;
     private String password;
     private String privateKey;
+    private List<String> tags;
 }

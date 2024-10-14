@@ -10,10 +10,9 @@ import {
   RouterProvider,
 } from "@common-module/common-react";
 import "./App.css";
-import { Layout } from "./pages/Layout";
-import { Main } from "./pages/MainPage";
-import { UserService } from "./services";
+import { TerminalView } from "./pages/TerminalView";
 import { UserView } from "./pages/UserView";
+import { ServerView } from "./pages/ServerView";
 
 const SGlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -44,9 +43,14 @@ const router: RouterMenuItem[] = [
         element: <UserView />,
       },
       {
-        path: "role",
-        name: "角色管理",
-        element: "role",
+        path: "server",
+        name: "服务器管理",
+        element: <ServerView />,
+      },
+      {
+        path: "terminal",
+        name: "Terminal",
+        element: <TerminalView />,
       },
     ],
   },
@@ -59,7 +63,7 @@ const AppRouter = createBrowserRouter([
   },
   {
     path: "terminal",
-    element: <Layout />,
+    element: <TerminalView />,
   },
   {
     path: "*",

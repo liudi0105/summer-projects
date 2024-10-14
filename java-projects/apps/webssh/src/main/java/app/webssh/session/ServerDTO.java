@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Accessors(chain = true)
@@ -14,4 +16,5 @@ public class ServerDTO extends BaseDTO {
     private String username;
     private String password;
     private String privateKey;
+    private List<String> tags;
 }

@@ -19,4 +19,8 @@ export interface ServerEntity extends BaseEntity {
 
 export class ServerService extends BaseService<ServerEntity> {
   protected group = "server";
+
+  listAll = () => {
+    return this.postJsonForJson<ServerEntity[]>("list-all");
+  };
 }
