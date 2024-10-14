@@ -1,10 +1,9 @@
 import { Ant } from "@common-module/common-antd";
 import { styled } from "@common-module/common-react";
 import { createRef, useEffect, useState } from "react";
-import { openTerminal } from "../util/terminal.ts";
 import { container } from "../container.ts";
 import { ServerEntity, ServerService } from "../services/index.ts";
-import { BaseEntity } from "@common-module/common-api";
+import { openTerminal } from "../util/terminal.ts";
 
 const STerminalBox = styled.div``;
 
@@ -28,7 +27,11 @@ export const ExploreItem = (
     onOpen: (serverId: string) => void;
   } & ServerState
 ) => {
-  return <SExploreItem onClick={() => props.onOpen(props.id)}></SExploreItem>;
+  return (
+    <SExploreItem onClick={() => props.onOpen(props.id)}>
+      {props.host}
+    </SExploreItem>
+  );
 };
 
 export interface ServerState extends ServerEntity {
@@ -37,14 +40,12 @@ export interface ServerState extends ServerEntity {
 }
 
 const Explore = (props: { servers: ServerState[] }) => {
-  const [servers, setServers] = useState<ServerState[]>(props.servers);
-
   return (
     <SExplore>
-      {servers.map((v) => (
+      {props.servers.map((v) => (
         <ExploreItem
           onOpen={(serverId) => {
-            const s = servers.find((v) => v.id == serverId);
+            const s = props.servers.find((v) => v.id == serverId);
             if (s) {
               s.open = true;
             }
@@ -65,7 +66,7 @@ const serverService = container.get(ServerService);
 export const TerminalView = () => {
   const ref = createRef<HTMLDivElement>();
 
-  const [servers, setServers] = useState<ServerEntity[]>([]);
+  const [servers, setServers] = useState<ServerState[]>([]);
 
   useEffect(() => {
     openTerminal(
@@ -79,7 +80,14 @@ export const TerminalView = () => {
       ref.current!
     );
 
-    serverService.listAll().then(setServers);
+    serverService.listAll().then((v) => {
+      const s = v as ServerState[];
+      s.forEach((v) => {
+        v.current = false;
+        v.open = false;
+      });
+      setServers(s);
+    });
   }, []);
 
   return (
