@@ -1,7 +1,6 @@
 import { Ant } from "@common-module/common-antd";
 import { styled } from "@common-module/common-react";
 import { createRef, useEffect, useState } from "react";
-import { container } from "../container.ts";
 import { ServerEntity, ServerService } from "../services/index.ts";
 import { openTerminal } from "../util/terminal.ts";
 
@@ -61,7 +60,7 @@ const OpenTab = () => {
   return <div style={{ height: 28 }}></div>;
 };
 
-const serverService = container.get(ServerService);
+const serverService = new ServerService();
 
 export const TerminalView = () => {
   const ref = createRef<HTMLDivElement>();

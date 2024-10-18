@@ -1,5 +1,3 @@
-import { inject, injectable } from "inversify";
-
 export interface RequestConfig {
   url: string;
   method: "GET" | "POST";
@@ -11,28 +9,28 @@ export type RequestProvider = {
   request(config: RequestConfig): Promise<string>;
 };
 
-@injectable()
 export class FetchRequestProvider implements RequestProvider {
   request = (config: RequestConfig): Promise<string> => {
     config.headers = {
       ...config.headers,
     };
 
+    console.log(config.url)
+
     return fetch(config.url, {
       method: config.method,
-      mode: "cors",
+      mode:"cors",
       credentials: "include",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: config.body ? JSON.stringify(config.body) : undefined
+      body: config.body ? JSON.stringify(config.body) : undefined,
     }).then((v) => v.text());
   };
 }
 
-@injectable()
 export class HttpClient {
-  constructor(@inject(FetchRequestProvider) private provider: RequestProvider) {}
+  constructor(private provider: RequestProvider = new FetchRequestProvider()) {}
 
   postJsonForString(url: string, data?: object): Promise<string> {
     return this.request({

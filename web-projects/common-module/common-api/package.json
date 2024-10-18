@@ -17,7 +17,6 @@
     "@common-module/common-types": "workspace:*"
   },
   "peerDependencies": {
-    "inversify": "^6.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

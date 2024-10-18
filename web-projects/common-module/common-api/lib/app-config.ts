@@ -1,5 +1,8 @@
+import { HttpClient } from "@common-module/common-util";
+
 export type AppConfig = {
-  apiPrefix: string;
+  apiUrl: string;
+  httpClient: HttpClient;
 };
 
 const config: {
@@ -9,12 +12,16 @@ const config: {
 };
 
 export const registerConfig = (appConfig: AppConfig) => {
-  config.current = appConfig;
+  const { httpClient = new HttpClient, ...rest } = appConfig;
+  config.current = {
+    httpClient,
+    ...rest,
+  };
 };
 
 export const getConfig = () => {
   if (!config.current) {
-    throw new Error('config not found');
+    throw new Error("config not found");
   }
   return config.current;
 };

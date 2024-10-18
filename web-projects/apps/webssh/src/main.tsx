@@ -6,7 +6,7 @@ import "/node_modules/@xterm/xterm/css/xterm.css";
 import { registerConfig } from "@common-module/common-api";
 
 registerConfig({
-  apiPrefix: "/api",
+  apiUrl: "/api",
 });
 
 createRoot(document.getElementById("root")!).render(<App />);

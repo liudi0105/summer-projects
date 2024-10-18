@@ -6,7 +6,7 @@ import "./index.css";
 import { registerConfig } from "@common-module/common-api";
 
 registerConfig({
-  apiPrefix: '/api'
+  apiUrl: '/api'
 })
 
 createRoot(document.getElementById("root")!).render(

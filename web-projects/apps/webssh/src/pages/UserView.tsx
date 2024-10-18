@@ -1,8 +1,7 @@
 import { CrudTable } from "@common-module/common-antd";
-import { container } from "../container";
 import { UserService } from "../services";
 
-const userService = container.get(UserService);
+const userService = new UserService();
 
 export const UserView = () => {
   return (

@@ -1,8 +1,7 @@
 import { CrudTable } from "@common-module/common-antd";
-import { container } from "../container";
 import { ServerService } from "../services";
 
-const serverService = container.get(ServerService);
+const serverService = new ServerService();
 
 export const ServerView = () => {
   return (
