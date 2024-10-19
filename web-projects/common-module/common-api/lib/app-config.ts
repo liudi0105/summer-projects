@@ -2,7 +2,7 @@ import { HttpClient } from "@common-module/common-util";
 
 export type AppConfig = {
   apiUrl: string;
-  httpClient: HttpClient;
+  httpClient?: HttpClient;
 };
 
 const config: {
@@ -12,7 +12,7 @@ const config: {
 };
 
 export const registerConfig = (appConfig: AppConfig) => {
-  const { httpClient = new HttpClient, ...rest } = appConfig;
+  const { httpClient = new HttpClient(), ...rest } = appConfig;
   config.current = {
     httpClient,
     ...rest,
