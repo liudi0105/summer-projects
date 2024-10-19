@@ -1,4 +1,4 @@
-package app.webssh;
+package app.webssh.util;
 
 import org.springframework.stereotype.Component;
 

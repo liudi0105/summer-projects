@@ -1,4 +1,4 @@
-package app.webssh;
+package app.webssh.util;
 
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.JSch;

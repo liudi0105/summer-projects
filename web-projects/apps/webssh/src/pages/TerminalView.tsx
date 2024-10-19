@@ -1,7 +1,7 @@
 import { Ant } from "@common-module/common-antd";
 import { styled } from "@common-module/common-react";
 import { createRef, useEffect, useState } from "react";
-import { ServerEntity, ServerService } from "../services/index.ts";
+import { type ServerEntity, ServerService } from "../services/index.ts";
 import { openTerminal } from "../util/terminal.ts";
 
 const STerminalBox = styled.div``;
@@ -43,8 +43,9 @@ const Explore = (props: { servers: ServerState[] }) => {
     <SExplore>
       {props.servers.map((v) => (
         <ExploreItem
+          key={v.id}
           onOpen={(serverId) => {
-            const s = props.servers.find((v) => v.id == serverId);
+            const s = props.servers.find((v) => v.id === serverId);
             if (s) {
               s.open = true;
             }
@@ -57,7 +58,7 @@ const Explore = (props: { servers: ServerState[] }) => {
 };
 
 const OpenTab = () => {
-  return <div style={{ height: 28 }}></div>;
+  return <div style={{ height: 28 }} />;
 };
 
 const serverService = new ServerService();
@@ -68,6 +69,10 @@ export const TerminalView = () => {
   const [servers, setServers] = useState<ServerState[]>([]);
 
   useEffect(() => {
+    if (!ref.current) {
+      throw new Error("box not ready");
+    }
+
     openTerminal(
       {
         operate: "connect",
@@ -76,15 +81,15 @@ export const TerminalView = () => {
         username: "root", //用户名
         password: "}D5rmJNJx.(Z3,KM", //密码
       },
-      ref.current!
+      ref.current
     );
 
     serverService.listAll().then((v) => {
       const s = v as ServerState[];
-      s.forEach((v) => {
+      for (const v of s) {
         v.current = false;
         v.open = false;
-      });
+      }
       setServers(s);
     });
   }, []);
@@ -94,7 +99,7 @@ export const TerminalView = () => {
       <Explore servers={servers} />
       <Ant.Flex vertical style={{ width: "100%", height: "100%" }}>
         <OpenTab />
-        <STerminalBox ref={ref}></STerminalBox>
+        <STerminalBox ref={ref} />
       </Ant.Flex>
     </Ant.Flex>
   );

@@ -1,4 +1,4 @@
-package app.webssh;
+package app.webssh.util;
 
 import com.jcraft.jsch.JSchException;
 import common.module.util.AppJsons;
@@ -10,7 +10,7 @@ import org.springframework.web.socket.WebSocketSession;
 
 import java.io.IOException;
 
-import static app.webssh.SshSessionManager.executorService;
+import static app.webssh.util.SshSessionManager.executorService;
 
 @AllArgsConstructor
 @Slf4j

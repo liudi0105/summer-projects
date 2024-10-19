@@ -1,4 +1,4 @@
-package app.webssh;
+package app.webssh.util;
 
 import common.module.util.AppStrings;
 import org.springframework.http.server.ServerHttpRequest;
