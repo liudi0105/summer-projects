@@ -1,5 +1,9 @@
-import { ConfigProvider, FloatButtonGroup, MenuPage } from "@common-module/common-antd";
-import { routerMenu, RouterMenuItem } from "@common-module/common-api";
+import {
+  ConfigProvider,
+  FloatButtonGroup,
+  MenuPage,
+} from "@common-module/common-antd";
+import { routerMenu, type RouterMenuItem } from "@common-module/common-api";
 import {
   createBrowserRouter,
   createGlobalStyle,
@@ -54,11 +58,7 @@ const AppRouter = createBrowserRouter([
   {
     path: "*",
     element: (
-      <MenuPage
-        title="Dateme"
-        userEmail="小明"
-        routerMenuItems={router}
-      ></MenuPage>
+      <MenuPage title="Dateme" userEmail="小明" routerMenuItems={router} />
     ),
     children: routerMenu(router).routes,
   },
