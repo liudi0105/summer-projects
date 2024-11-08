@@ -10,6 +10,7 @@ const SExplore = styled.div`
   width: 200px;
   margin-right: 8px;
   border: 4px solid #888;
+  background-color: rgba(255,255,255, 0.1);
 `;
 
 const SExploreItem = styled.div`

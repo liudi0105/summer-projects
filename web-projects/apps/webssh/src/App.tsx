@@ -72,7 +72,7 @@ const AppRouter = createBrowserRouter([
         title="Dateme"
         userEmail="小明"
         routerMenuItems={router}
-      ></MenuPage>
+      />
     ),
     children: routerMenu(router).routes,
   },
